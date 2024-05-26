@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import os
 
 
 korenski_url = "https://c21.si/"
@@ -10,6 +11,8 @@ korenski_url_podrobno = "https://c21.si/nepremicnine/prodaja.html?&page="
 stran = 1
 nepremicnine = []
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+json_dir = os.path.join(base_dir, '..', 'JSON')
 
 #### PRIDOBIVANJE LINKOV
 #### Funkcija pridobi linke do podrobne strani od vsake nepremicnine 
@@ -203,12 +206,7 @@ while True:
     stran += 1
     counter += 1
 
-
-# PRINT ( to se lahko tudi odstrani )
-for property in nepremicnine:
-    print(property)
-
-
 # Shrani v json datoteko
-with open("nepremicnine.json", "w") as f:
+os.makedirs(json_dir, exist_ok=True)
+with open(os.path.join(json_dir, '21C.json'), "w", encoding="UTF-8") as f:
     json.dump(nepremicnine, f, ensure_ascii=False, indent=4)

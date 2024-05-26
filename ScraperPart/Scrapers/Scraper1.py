@@ -1,13 +1,19 @@
+import os
+import json
+import urllib.parse
+from datetime import datetime
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-import json
-import urllib.parse
-from datetime import datetime
-import time
 
+# Define the directory paths
+base_dir = os.path.dirname(os.path.abspath(__file__))
+json_dir = os.path.join(base_dir, '..', 'JSON')
+
+# Initialize the WebDriver
 driver = webdriver.Edge()
 
 # URL spletne strani
@@ -98,7 +104,7 @@ def scrape_individual_page(property_link: str) -> dict:
             for item in feature_items:
                 feature = item.text.strip()
                 lastnosti.append(feature)
-        print(attributes)
+
         opis = soup.find('div', itemprop='description').text.strip() if soup.find('div', itemprop='description') else 'N/A'
 
         # Scrapanje slik
@@ -135,7 +141,7 @@ def scrape_individual_page(property_link: str) -> dict:
 all_properties = []
 
 try:
-   # Zanka za scrapanje vseh strani
+    # Zanka za scrapanje vseh strani
     while True:
         properties = scrape_page()
         all_properties.extend(properties)
@@ -148,11 +154,8 @@ try:
             print("No more pages.")
             break
 
-    #count = len(all_properties)
-    #all_properties.append({'count': count})
-
     for property_data in all_properties:
-        if 'link' in property_data:
+        if 'link' in property_data: 
             property_link = property_data['link']
             individual_data = scrape_individual_page(property_link)
             property_data.update(individual_data)
@@ -160,7 +163,8 @@ try:
     json_data = json.dumps(all_properties, indent=4, ensure_ascii=False)
     print(json_data)
 
-    with open('property_data.json', 'w', encoding='utf-8') as json_file:
+    os.makedirs(json_dir, exist_ok=True)
+    with open(os.path.join(json_dir, 'Re_Max.json'), 'w', encoding='utf-8') as json_file:
         json_file.write(json_data)
 
 finally:

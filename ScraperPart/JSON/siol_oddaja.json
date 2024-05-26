@@ -1,0 +1,41 @@
+[
+    {
+        "naziv": "Oddaja 2-sobnega stanovanja, Ljubljana Center",
+        "posredovanje": "Oddaja",
+        "link": "https://nepremicnine.siol.net/oddaja/stanovanje-ljubljana_1446",
+        "tip_nepremicnine": "Stanovanje",
+        "lokacija": "Ljubljana, Center",
+        "cena": 1400.0,
+        "st_sob": 2.0,
+        "st_spalnic": 1,
+        "st_kopalnic": 1,
+        "leto_izgradnje": 2022,
+        "st_nadstopij": "N/A",
+        "velikost_zemljisca": "N/A",
+        "velikost_skupaj": "53,10 m²",
+        "id_nepremicnine": "stanovanje-ljubljana_1446",
+        "image_urls": [
+            "https://propertyhub-prod.s3.eu-central-1.amazonaws.com/__sized__/listings/1446/images/img2441__6544c51630d59-thumbnail-1000x1000-70.JPEG",
+            "https://propertyhub-prod.s3.eu-central-1.amazonaws.com/__sized__/listings/1446/images/img2414__6544c4de9cc6d-thumbnail-1000x1000-70.JPEG",
+            "https://propertyhub-prod.s3.eu-central-1.amazonaws.com/__sized__/listings/1446/images/img2419__6544c4cc7c9ad-thumbnail-1000x1000-70.JPEG",
+            "https://propertyhub-prod.s3.eu-central-1.amazonaws.com/__sized__/listings/1446/images/img2428__6544c4ea88e3b-thumbnail-1000x1000-70.JPEG",
+            "https://propertyhub-prod.s3.eu-central-1.amazonaws.com/__sized__/listings/1446/images/img2442__6544c530cd975-thumbnail-1000x1000-70.JPEG",
+            "https://propertyhub-prod.s3.eu-central-1.amazonaws.com/__sized__/listings/1446/images/img2443__6544c530cd975-thumbnail-1000x1000-70.JPEG",
+            "https://propertyhub-prod.s3.eu-central-1.amazonaws.com/__sized__/listings/1446/images/img2448__6544c54e56aa2-thumbnail-1000x1000-70.JPEG"
+        ],
+        "opis": "Opis nepremičnine\nOddamo čudovito novo kompletno opremljeno stanovanje v samem centru mesta!\nPonujamo vam priložnost, da najamete  sodobno in popolnoma opremljeno stanovanje, ki bo zadovoljilo vse vaše potrebe in želje.",
+        "leto_obnove": "N/A",
+        "agencija": "Stoja trade d.o.o.",
+        "lastnosti": [
+            [
+                "Klima",
+                "Dvigalo",
+                "Balkon",
+                "Kuhinja z aparati",
+                "Pomivalni stroj",
+                "Pralni stroj",
+                "Televizija"
+            ]
+        ]
+    }
+]
