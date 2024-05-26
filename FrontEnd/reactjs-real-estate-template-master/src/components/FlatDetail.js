@@ -1,7 +1,6 @@
-import React from "react";
 import ImageGallery from 'react-image-gallery';
 import { useLocation } from 'react-router-dom';
-
+import React, { useEffect } from "react";
 
 const FlatDetail = () => {
 
@@ -11,20 +10,6 @@ const FlatDetail = () => {
     const { id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti } = nepremicnina;
 
     console.log(id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti)
-    /*const images = [
-        {
-            original: '/img/product1.jpeg',
-            thumbnail: '/img/product1.jpeg',
-        },
-        {
-            original: '/img/banner.jpg',
-            thumbnail: '/img/banner.jpg',
-        },
-        {
-            original: '/img/product1.jpeg',
-            thumbnail: '/img/product1.jpeg',
-        },
-    ];*/
 
 
     const images = image_urls.map((url) => ({
@@ -71,10 +56,7 @@ const FlatDetail = () => {
                         </div>
                         <div className="row">
                             <div className="col-lg-8">
-                                <div className="fd-item">
-                                    <h4>Opis</h4>
-                                    <p>{opis}</p>
-                                </div>
+
                                 <div className="fd-item fd-property-detail">
                                     <h4>Lastnosti</h4>
                                     <div className="row">
@@ -98,11 +80,11 @@ const FlatDetail = () => {
                                         </div>
                                         <div className="col-lg-4">
                                             <span>Velikost Zemljišča: </span>
-                                            <span>{velikost_zemljisca}</span>
+                                            <span>{velikost_zemljisca} m<sup>2</sup></span>
                                         </div>
                                         <div className="col-lg-4">
                                             <span>Velikost skupaj:  </span>
-                                            <span>{velikost_skupaj}</span>
+                                            <span>{velikost_skupaj} m<sup>2</sup></span>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -115,6 +97,10 @@ const FlatDetail = () => {
                                             <span>{leto_obnove}</span>
                                         </div>
                                     </div>
+                                </div>
+                                <div className="fd-item">
+                                    <h4>Opis</h4>
+                                    <p>{opis}</p>
                                 </div>
                                 <div className="fd-item fd-features">
                                 <h4>Značilnosti</h4>
