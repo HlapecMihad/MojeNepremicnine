@@ -54,14 +54,9 @@ def pridobi_podrobnosti_strani(url):
     ##### cena
     cena_element = soup.select_one(".value")
     cena = cena_element.get_text(strip=True).rstrip("€") if cena_element else "N/A"
-    try:
-        cena = int(
-            cena.replace(".", "").replace(",", "")
-        ) 
-    except ValueError:
-        cena = "N/A"
+
         
-    #### Tip nepremicnine
+    #### Tip nepremicnine    #### POPRAVI
     tip_nepremicnine = soup.select_one(".info_list").find_next("li").get_text(strip=True)
 
     ##### image_urls
@@ -75,11 +70,7 @@ def pridobi_podrobnosti_strani(url):
         if st_sob_element
         else "N/A"
     )
-    try:
-        st_sob = int(st_sob)
-    except ValueError:
-        st_sob = "N/A"
-        
+
     ##### st_spalnic
     st_spalnic_element = soup.select_one(".ico_9")
     st_spalnic = (
@@ -87,10 +78,6 @@ def pridobi_podrobnosti_strani(url):
         if st_spalnic_element
         else "N/A"
     )
-    try:
-        st_spalnic = int(st_spalnic)
-    except ValueError:
-        st_spalnic = "N/A"
 
     ##### st_kopalnic
     st_kopalnic_element = soup.select_one(".ico_11")
@@ -99,10 +86,6 @@ def pridobi_podrobnosti_strani(url):
         if st_kopalnic_element
         else "N/A"
     )
-    try:
-        st_kopalnic = int(st_kopalnic)
-    except ValueError:
-        st_kopalnic = "N/A"
 
     ##### leto_izgradnje
     leto_izgradnje_element = soup.select_one(".ico_6")
@@ -111,10 +94,6 @@ def pridobi_podrobnosti_strani(url):
         if leto_izgradnje_element
         else "N/A"
     )
-    try:
-        leto_izgradnje = int(leto_izgradnje)
-    except ValueError:
-        leto_izgradnje = "N/A"
 
     ##### st_nadstropij
     st_nadstropij_element = soup.select_one(".ico_5")
@@ -123,17 +102,12 @@ def pridobi_podrobnosti_strani(url):
         if st_nadstropij_element
         else "N/A"
     )
-    try:
-        st_nadstropij = int(st_nadstropij)
-    except ValueError:
-        st_nadstropij = "N/A"
 
     ##### velikost_zemljisca
     velikost_zemljisca = soup.select_one('.ico_4').find_next('strong').get_text(strip=True) if soup.select_one('.ico_4') else 'N/A'
 
     ##### velikost_skupaj
     velikost_skupaj = soup.select_one('.ico_3').find_next('strong').get_text(strip=True) if soup.select_one('.ico_3') else 'N/A'
-
 
     ##### id_nepremicnine
     id_nepremicnine_element = soup.select_one(".estate_id")
@@ -150,10 +124,6 @@ def pridobi_podrobnosti_strani(url):
         if leto_obnove_element
         else "N/A"
     )
-    try:
-        leto_obnove = int(leto_obnove)
-    except ValueError:
-        leto_obnove = "N/A"
 
     ##### lastnosti
     lastnosti = [li.get_text(strip=True) for li in soup.select(".properties .list li")]
@@ -189,7 +159,7 @@ def pridobi_podrobnosti_strani(url):
 #### ZANKA
 #### Pojdi skozi vse strani, dokler ni več najdenih nepremicnin  /// while True  ali   while counter < 1
 counter = 0
-while True:
+while counter < 1:
     url = f"{korenski_url_podrobno}{stran}"
     print(f"Pridobivam linke iz strani {stran}...")
     detail_links = pridobi_link_podstrani(url)

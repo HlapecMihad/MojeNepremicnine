@@ -1,7 +1,7 @@
 import Title from "./Title"
 import FlatItem from "./FlatItem"
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from "../services/api"
 
 const FlatList = () => {
     const title = {
@@ -12,7 +12,7 @@ const FlatList = () => {
     const [nepremicnine, setNepremicnine] = useState([]);
 
     useEffect(() => {
-      axios.get('http://localhost:8080/api/nepremicnine')
+      api.get('/nepremicnine/vseNepremicnine')
         .then(response => {
           setNepremicnine(response.data);
         })
@@ -21,6 +21,7 @@ const FlatList = () => {
         });
     }, []);
 
+    
     return (
         <section className="section-all-re">
             <div className="container">

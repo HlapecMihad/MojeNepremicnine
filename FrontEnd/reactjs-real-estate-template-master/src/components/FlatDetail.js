@@ -1,8 +1,16 @@
 import React from "react";
 import ImageGallery from 'react-image-gallery';
+import { useLocation } from 'react-router-dom';
 
 
 const FlatDetail = () => {
+
+    const location = useLocation();
+    const nepremicnina = location.state.nepremicnina;
+
+    const { id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropiij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti } = nepremicnina;
+
+    console.log(id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropiij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti)
     const images = [
         {
             original: '/img/product1.jpeg',
@@ -35,31 +43,31 @@ const FlatDetail = () => {
                     <div className="col-lg-12">
                         <div className="fd-top flat-detail-content">
                             <div>
-                                <h3 className="flat-detail-title">Lorem ipsum dolor sit amet.</h3>
+                                <h3 className="flat-detail-title">{naziv}</h3>
                                 <p className="fd-address"> <i className="fas fa-map-marker-alt"></i>
-                                Lorem ipsum dolor sit amet</p>
+                                {lokacija}</p>
                             </div>
                             <div>
-                                <span className="fd-price">$650</span>
+                                <span className="fd-price">{cena}€</span>
                             </div>
                         </div>
                         <ImageGallery flickThreshold={0.50} slideDuration={0} items={images} showNav={false} showFullscreenButton={false} showPlayButton={false} />
                         <div className="row">
                             <div className="col-lg-8">
                                 <div className="fd-item">
-                                    <h4>Description</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                    <h4>Opis</h4>
+                                    <p>{opis}</p>
                                 </div>
                                 <div className="fd-item fd-property-detail">
-                                    <h4>Property Details</h4>
+                                    <h4>Lastnosti</h4>
                                     <div className="row">
                                         <div className="col-lg-4">
-                                            <span>Kitchen: </span>
-                                            <span>1</span>
+                                            <span>Število sob: </span>
+                                            <span>{st_sob}</span>
                                         </div>
                                         <div className="col-lg-4">
-                                            <span>All Rooms: </span>
-                                            <span>5</span>
+                                            <span>Število spalnic: </span>
+                                            <span>{st_spalnic}</span>
                                         </div>
                                         <div className="col-lg-4">
                                             <span>Kitchen:  </span>

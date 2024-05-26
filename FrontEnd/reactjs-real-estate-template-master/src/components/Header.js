@@ -11,7 +11,7 @@ const Header = () => {
                             <div className="d-flex align-items-center">
                             <i className="fas fa-home"></i>
                                 <span className="ms-2">
-                                    MB
+                                    Moje Nepremičnine
                            </span>
                             </div>
                         </Link>
@@ -21,16 +21,16 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav ms-auto">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">Home</Link>
+                                    <Link className="nav-link" to="/">Domov</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link  className="nav-link" to="/blog">Blog</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link  className="nav-link" to="/about">About</Link>
+                                    <Link  className="nav-link" to="/about">O nas</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="#">Category <i className="fas fa-chevron-down"></i></Link>
+                                    <Link className="nav-link" to="#">Kategorije <i className="fas fa-chevron-down"></i></Link>
                                     <ul className="sub-ul">
                                         <li><Link to="#">item</Link></li>
                                         <li><Link to="#">item</Link></li>
@@ -38,7 +38,7 @@ const Header = () => {
                                     </ul>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/contact">Contact</Link>
+                                    <Link className="nav-link" to="/contact">Kontakt</Link>
                                 </li>
                             </ul>
                         </div>

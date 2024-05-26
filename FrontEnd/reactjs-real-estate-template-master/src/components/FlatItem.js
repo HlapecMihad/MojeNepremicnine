@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // TUKAJ SE MORAJO STVARI PRIKAZOVATI DINAMOCNO
 const FlatItem = ({ nepremicnina }) => {
-    const { naziv, cena, slug, image_urls, posredovanje, agencija } = nepremicnina;
+    const { id, naziv, cena, slug, image_urls, posredovanje, agencija } = nepremicnina;
 
 
     return (
@@ -26,7 +26,7 @@ const FlatItem = ({ nepremicnina }) => {
                         <div>
                             <i className="fas fa-check-circle"></i> <span> {agencija} </span>
                         </div>
-                        <Link to={`/flat/${slug}`} className="item-title">
+                        <Link to={{ pathname: `/nepremicnina/${id}`, state: { nepremicnina } }} className="item-title">
                             <button className="btn btn-detail">Poglej</button>
                         </Link>
                     </div>

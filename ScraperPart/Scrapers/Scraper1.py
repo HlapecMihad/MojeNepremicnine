@@ -78,8 +78,7 @@ def scrape_individual_page(property_link: str) -> dict:
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         title = soup.find('h1', itemprop='name').text.strip() if soup.find('h1', itemprop='name') else 'N/A'
         
-        cena_str = soup.find('a', class_='oggtm').text.strip().replace('€', '').replace('.', '').replace(',', '.').strip() if soup.find('a', class_='oggtm') else 'N/A'
-        cena = float(cena_str) if cena_str != 'N/A' else 'N/A' 
+        cena = soup.find('a', class_='oggtm').text.strip().replace('€', '').replace('.', '').replace(',', '.').strip() if soup.find('a', class_='oggtm') else 'N/A'
         
         id_nepremicnine = soup.find('span', itemprop='productID').text.strip() if soup.find('span', itemprop='productID') else 'N/A'
         
@@ -120,15 +119,14 @@ def scrape_individual_page(property_link: str) -> dict:
             'naziv': title,
             'cena': cena,
             'id_nepremicnine': id_nepremicnine,
-            'st_sob': float(attributes.get('Skupno št. sob:', 'N/A').split()[0].replace(',', '.')) if 'Skupno št. sob:' in attributes else 'N/A',
-            'st_spalnic': int(attributes.get('Spalnice:', 'N/A').split()[0]) if 'Spalnice:' in attributes else 'N/A',
-            'st_kopalnic': int(attributes.get('Št. kopalnic', 'N/A').split()[0]) if 'Št. kopalnic' in attributes else 'N/A',
+            'st_sob': attributes.get('Skupno št. sob:', 'N/A').split()[0].replace(',', '.') if 'Skupno št. sob:' in attributes else 'N/A',
+            'st_spalnic': attributes.get('Spalnice:', 'N/A').split()[0] if 'Spalnice:' in attributes else 'N/A',
+            'st_kopalnic': attributes.get('Št. kopalnic', 'N/A').split()[0] if 'Št. kopalnic' in attributes else 'N/A',
             'velikost_skupaj': attributes.get('Skupaj (m²)', 'N/A').split()[0].replace(',', '.') + " m²" if 'Skupaj (m²)' in attributes else 'N/A',
             'velikost_zemljisca': attributes.get('Velikost zemljišča (m²)', 'N/A').split()[0].replace(',', '.') + " m²" if 'Velikost zemljišča (m²)' in attributes else 'N/A',
-            'leto_izgradnje': int(attributes.get('Leto gradnje', 'N/A').split()[0]) if 'Leto gradnje' in attributes else 'N/A',
-            'parkirisce': int(attributes.get('Parkirišča', 'N/A').split()[0]) if 'Parkirišča' in attributes else 'N/A',
-            'st_nadstropij': int(dodatni_attributes.get('Št. nadstropij', 'N/A').split()[0]) if 'Št. nadstropij' in dodatni_attributes else 'N/A',
-            'st_wc': int(dodatni_attributes.get('Št. stranišč:', 'N/A').split()[0]) if 'Št. stranišč:' in dodatni_attributes else 'N/A',
+            'leto_izgradnje': attributes.get('Leto gradnje', 'N/A').split()[0] if 'Leto gradnje' in attributes else 'N/A',
+            'parkirisce': attributes.get('Parkirišča', 'N/A').split()[0] if 'Parkirišča' in attributes else 'N/A',
+            'st_nadstropij': dodatni_attributes.get('Št. nadstropij', 'N/A').split()[0] if 'Št. nadstropij' in dodatni_attributes else 'N/A',
             'opis': opis,
             'lastnosti': lastnosti,
             'image_url': image_url,
@@ -140,9 +138,10 @@ def scrape_individual_page(property_link: str) -> dict:
 
 all_properties = []
 
+counter = 0
 try:
     # Zanka za scrapanje vseh strani
-    while True:
+    while counter <1:
         properties = scrape_page()
         all_properties.extend(properties)
 
@@ -153,6 +152,7 @@ try:
         except:
             print("No more pages.")
             break
+        counter += 1
 
     for property_data in all_properties:
         if 'link' in property_data: 

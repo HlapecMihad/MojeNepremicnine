@@ -116,11 +116,11 @@ def scrape_data(url):
         'link': url,
         'tip_nepremicnine': property_type,
         'lokacija': region + ', ' + city,
-        'cena': float(price.replace('.', '').replace(',', '.').replace(' €', '').replace('/mesec','').replace('/dan','')) if price not in ['N/A', 'Po dogovoru'] else 'N/A',
-        'st_sob': float(rooms.split('-')[0].replace(',', '.').replace('+', '')) if rooms not in ['N/A', 'Drugo'] else 'N/A',
-        'st_spalnic': int(spalnice) if spalnice != 'N/A' else 'N/A',
-        'st_kopalnic': int(kopalnice) if kopalnice != 'N/A' else 'N/A',
-        'leto_izgradnje': int(year_built) if year_built != 'N/A' else 'N/A',
+        'cena': price.replace('.', '').replace(',', '.').replace(' €', '').replace('/mesec','').replace('/dan',''),
+        'st_sob': rooms.split('-')[0].replace(',', '.').replace('+', ''),
+        'st_spalnic': spalnice,
+        'st_kopalnic': kopalnice,
+        'leto_izgradnje': year_built,
         'st_nadstopij': 'N/A',  
         'velikost_zemljisca': land_size,  
         'velikost_skupaj': size,  
@@ -140,9 +140,12 @@ def Nepremicnineprodaja():
     links = [link.strip() for link in links]
 
     scraped_data = []
-    for link in links:
-        data = scrape_data(link)
-        scraped_data.append(data)
+    counter = 0
+    for link in links:   
+        if counter < 1:
+            data = scrape_data(link)
+            scraped_data.append(data)
+        counter += 1
 
     os.makedirs(json_dir, exist_ok=True)
     with open(os.path.join(json_dir, 'siol_prodaja.json'), 'w', encoding='utf-8') as outfile:
