@@ -8,9 +8,9 @@ const FlatDetail = () => {
     const location = useLocation();
     const nepremicnina = location.state.nepremicnina;
 
-    const { id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropiij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti } = nepremicnina;
+    const { id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti } = nepremicnina;
 
-    console.log(id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropiij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti)
+    console.log(id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti)
     const images = [
         {
             original: '/img/product1.jpeg',

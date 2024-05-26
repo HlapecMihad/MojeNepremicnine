@@ -26,7 +26,7 @@ public class Nepremicnina {
     private String st_spalnic;
     private String st_kopalnic;
     private String leto_izgradnje;
-    private String st_nadstopij;
+    private String st_nadstropij;
     private String velikost_zemljisca;
     private String velikost_skupaj;
     private String id_nepremicnine;
@@ -37,39 +37,76 @@ public class Nepremicnina {
     private List<String> lastnosti;
 
 
-    public String getCena() {
-        return cena;
+    public int getCenaInt() {
+        try {
+            return Integer.parseInt(cena);
+        } catch (NumberFormatException e) {
+            // Handle conversion failure, you could log this or take another action
+            return 0; // Default value or throw an exception if appropriate
+        }
     }
 
-    public String getSt_sob() {
-        return st_sob;
+    public int getSt_sob() {
+        try {
+            return Integer.parseInt(st_sob);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
-    public String getSt_spalnic() {
-        return st_spalnic;
+    public int getSt_spalnic() {
+        try {
+            return Integer.parseInt(st_spalnic);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
-    public String getSt_kopalnic() {
-        return st_kopalnic;
+    public int getSt_kopalnic() {
+        try {
+            return Integer.parseInt(st_kopalnic);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
-    public String getLeto_izgradnje() {
-        return leto_izgradnje;
+    public int getLeto_izgradnje() {
+        try {
+            return Integer.parseInt(leto_izgradnje);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
-    public String getSt_nadstopij() {
-        return st_nadstopij;
+    public int getSt_nadstropij() {
+        try {
+            return Integer.parseInt(st_nadstropij);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
-    public String getVelikost_zemljisca() {
-        return velikost_zemljisca;
+    public int getVelikost_zemljisca() {
+        try {
+            return Integer.parseInt(velikost_zemljisca);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
-    public String getVelikost_skupaj() {
-        return velikost_skupaj;
+    public int getVelikost_skupaj() {
+        try {
+            return Integer.parseInt(velikost_skupaj);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
-    public String getLeto_obnove() {
-        return leto_obnove;
+    public int getLeto_obnove() {
+        try {
+            return Integer.parseInt(leto_obnove);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }

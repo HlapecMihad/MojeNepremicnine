@@ -121,7 +121,7 @@ def scrape_data(url):
         'st_spalnic': spalnice,
         'st_kopalnic': kopalnice,
         'leto_izgradnje': year_built,
-        'st_nadstopij': 'N/A',  
+        'st_nadstropij': 'N/A',  
         'velikost_zemljisca': land_size,  
         'velikost_skupaj': size,  
         'id_nepremicnine': id_nepremicnine if id_nepremicnine != 'N/A' else url.split('/')[4],
