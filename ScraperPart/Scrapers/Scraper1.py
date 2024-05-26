@@ -129,7 +129,7 @@ def scrape_individual_page(property_link: str) -> dict:
             'st_nadstropij': dodatni_attributes.get('Št. nadstropij', 'N/A').split()[0] if 'Št. nadstropij' in dodatni_attributes else 'N/A',
             'opis': opis,
             'lastnosti': lastnosti,
-            'image_url': image_url,
+            'image_urls': image_url,
             'agencija': "Re-Max"
         }
     except Exception as e:
