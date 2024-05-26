@@ -16,11 +16,19 @@ json_dir = os.path.join(base_dir, '..', 'JSON')
 # Initialize the WebDriver
 driver = webdriver.Edge()
 
-# URL spletne strani
+# URL of the website
 base_url = 'https://www.re-max.si/PublicListingList.aspx'
 driver.get(base_url)
 
-# Frunkcija za transformirnaje tipa nepremičnine
+# Click the "Allow Cookies" button if it appears
+try:
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"))
+    ).click()
+except Exception as e:
+    print("No 'Allow Cookies' button found or error clicking it:", e)
+
+# Function to transform the property type
 def transform_tip_nepremicnine(tip_nepremicnine: str) -> str:
     mapping = {
         'Pisarna': 'Poslovni prostor',
@@ -30,7 +38,7 @@ def transform_tip_nepremicnine(tip_nepremicnine: str) -> str:
     }
     return mapping.get(tip_nepremicnine, tip_nepremicnine)
 
-# Funkcija za scrapanje vseh linkov za posamezne nepremičnine
+# Function to scrape all property links
 def scrape_page() -> list:
     WebDriverWait(driver, 20).until(
         EC.presence_of_element_located((By.CLASS_NAME, "gallery-item-container"))
@@ -68,7 +76,7 @@ def scrape_page() -> list:
 
     return properties
 
-# Funkcija za scrapanje podatkov za posamezno nepremičnino
+# Function to scrape individual property data
 def scrape_individual_page(property_link: str) -> dict:
     try:
         driver.get(property_link)
@@ -78,7 +86,7 @@ def scrape_individual_page(property_link: str) -> dict:
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         title = soup.find('h1', itemprop='name').text.strip() if soup.find('h1', itemprop='name') else 'N/A'
         
-        cena = soup.find('a', class_='oggtm').text.strip().replace('€', '').replace('.', '').replace(',', '.').strip() if soup.find('a', class_='oggtm') else 'N/A'
+        cena = soup.find('a', class_='oggtm').text.strip().replace('€', '').strip() if soup.find('a', class_='oggtm') else 'N/A'
         
         id_nepremicnine = soup.find('span', itemprop='productID').text.strip() if soup.find('span', itemprop='productID') else 'N/A'
         
@@ -106,7 +114,7 @@ def scrape_individual_page(property_link: str) -> dict:
 
         opis = soup.find('div', itemprop='description').text.strip() if soup.find('div', itemprop='description') else 'N/A'
 
-        # Scrapanje slik
+        # Scrape images
         image_url = []
         thumbnails_container = soup.find('div', class_='sp-thumbnails')
         if thumbnails_container:
@@ -140,8 +148,8 @@ all_properties = []
 
 counter = 0
 try:
-    # Zanka za scrapanje vseh strani
-    while counter <1:
+    # Loop to scrape all pages
+    while counter < 1:
         properties = scrape_page()
         all_properties.extend(properties)
 

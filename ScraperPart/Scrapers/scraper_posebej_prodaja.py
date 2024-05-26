@@ -116,7 +116,7 @@ def scrape_data(url):
         'link': url,
         'tip_nepremicnine': property_type,
         'lokacija': region + ', ' + city,
-        'cena': price.replace('.', '').replace(',', '.').replace(' €', '').replace('/mesec','').replace('/dan',''),
+        'cena': price.replace(' €', '').replace('/mesec','').replace('/dan',''),
         'st_sob': rooms.split('-')[0].replace(',', '.').replace('+', ''),
         'st_spalnic': spalnice,
         'st_kopalnic': kopalnice,
