@@ -129,7 +129,7 @@ def scrape_data(url):
         'opis': description,
         'leto_obnove': rebuild_year,
         'agencija': agency_name,
-        'lastnosti': [lastnosti],
+        'lastnosti': lastnosti,
     }
     return data
  
