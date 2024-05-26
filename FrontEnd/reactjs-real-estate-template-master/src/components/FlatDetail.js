@@ -11,7 +11,7 @@ const FlatDetail = () => {
     const { id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti } = nepremicnina;
 
     console.log(id, naziv, posredovanje, link, tip_nepremicnine, lokacija, cena, st_sob, st_spalnic, st_kopalnic, leto_izgradnje, st_nadstropij, velikost_zemljisca, velikost_skupaj, image_urls, opis, leto_obnove, agencija, lastnosti)
-    const images = [
+    /*const images = [
         {
             original: '/img/product1.jpeg',
             thumbnail: '/img/product1.jpeg',
@@ -24,7 +24,14 @@ const FlatDetail = () => {
             original: '/img/product1.jpeg',
             thumbnail: '/img/product1.jpeg',
         },
-    ];
+    ];*/
+
+
+    const images = image_urls.map((url) => ({
+        original: url,
+        thumbnail: url,
+    }));
+
 
     return (
         <div className="flat-detail">
@@ -51,7 +58,17 @@ const FlatDetail = () => {
                                 <span className="fd-price">{cena}€</span>
                             </div>
                         </div>
-                        <ImageGallery flickThreshold={0.50} slideDuration={0} items={images} showNav={false} showFullscreenButton={false} showPlayButton={false} />
+                        <div className="fd-item fd-gallery">
+                            <h4>Gallery</h4>
+                            <ImageGallery
+                                items={images}
+                                showNav={false}
+                                showFullscreenButton={false}
+                                showPlayButton={false}
+                                slideDuration={0}
+                                flickThreshold={0.50}
+                            />
+                        </div>
                         <div className="row">
                             <div className="col-lg-8">
                                 <div className="fd-item">
@@ -70,84 +87,46 @@ const FlatDetail = () => {
                                             <span>{st_spalnic}</span>
                                         </div>
                                         <div className="col-lg-4">
-                                            <span>Kitchen:  </span>
-                                            <span>1</span>
+                                            <span>Število kopalnic:  </span>
+                                            <span>{st_kopalnic}</span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-lg-4">
-                                            <span>Kitchen: </span>
-                                            <span>1</span>
+                                            <span>Število nadstropij: </span>
+                                            <span>{st_nadstropij}</span>
                                         </div>
                                         <div className="col-lg-4">
-                                            <span>All Rooms: </span>
-                                            <span>5</span>
+                                            <span>Velikost Zemljišča: </span>
+                                            <span>{velikost_zemljisca}</span>
                                         </div>
                                         <div className="col-lg-4">
-                                            <span>Kitchen:  </span>
-                                            <span>1</span>
+                                            <span>Velikost skupaj:  </span>
+                                            <span>{velikost_skupaj}</span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-lg-4">
-                                            <span>Kitchen: </span>
-                                            <span>1</span>
+                                            <span>Leto izgradnje: </span>
+                                            <span>{leto_izgradnje}</span>
                                         </div>
                                         <div className="col-lg-4">
-                                            <span>All Rooms: </span>
-                                            <span>5</span>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <span>Kitchen:  </span>
-                                            <span>1</span>
+                                            <span>Leto obnove: </span>
+                                            <span>{leto_obnove}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="fd-item fd-features">
-                                    <h4>Features</h4>
-                                    <div className="row">
-                                        <div className="col-lg-4">
+                                <h4>Značilnosti</h4>
+                                <div className="row">
+                                    {lastnosti.map((feature, index) => (
+                                        <div key={index} className="col-lg-4">
                                             <i className="fa fa-check"></i>
-                                            <span>Lorem Ipsum</span>
+                                            <span>{feature}</span>
                                         </div>
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check" ></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check" ></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check" ></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check" ></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check"></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check" ></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check" ></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <i className="fa fa-check" ></i>
-                                            <span>Lorem Ipsum</span>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
+                            </div>
                                 <div className="fd-item">
                                     <h4>Maps</h4>
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15105200.564429!2d37.91245092855647!3d38.99130948591772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b0155c964f2671%3A0x40d9dbd42a625f2a!2zVMO8cmtpeWU!5e0!3m2!1str!2str!4v1630158674074!5m2!1str!2str" width="100%" height="450" loading="lazy"></iframe>

@@ -86,19 +86,19 @@ public class Nepremicnina {
         }
     }
 
-    public int getVelikost_zemljisca() {
+    public double getVelikost_zemljisca() {
         try {
-            return Integer.parseInt(velikost_zemljisca);
+            return Double.parseDouble(velikost_zemljisca.replaceAll("[^\\d,\\.]", "").replace(",", "."));
         } catch (NumberFormatException e) {
-            return 0;
+            return 0.0;
         }
     }
 
-    public int getVelikost_skupaj() {
+    public double getVelikost_skupaj() {
         try {
-            return Integer.parseInt(velikost_skupaj);
+            return Double.parseDouble(velikost_skupaj.replaceAll("[^\\d,\\.]", "").replace(",", "."));
         } catch (NumberFormatException e) {
-            return 0;
+            return 0.0;
         }
     }
 

@@ -144,7 +144,7 @@ def pridobi_podrobnosti_strani(url):
         "velikost_zemljisca": velikost_zemljisca,
         "velikost_skupaj": velikost_skupaj,
         "id_nepremicnine": id_nepremicnine,
-        "imeage_urls": image_urls,
+        "image_urls": image_urls,
         "opis": " ".join(
             [p.get_text(strip=True) for p in soup.select(".main_description .text p")]
         )
