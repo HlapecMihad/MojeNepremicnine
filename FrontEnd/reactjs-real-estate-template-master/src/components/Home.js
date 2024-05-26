@@ -11,10 +11,10 @@ const Home=()=>{
         <React.Fragment>
             <Banner/>
             <FlatList/>
-            <BestFlatList/>
+            {/*<BestFlatList/>*/}
             <Subscribe/>
-            <TeamList/>
-            <References/>
+            {/*<TeamList/>*/}
+            {/*<References/>*/}
         </React.Fragment>
     )
 }

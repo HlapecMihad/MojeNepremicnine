@@ -1,26 +1,33 @@
 import { Link } from "react-router-dom";
 
-const FlatItem = ({slug}) => {
+
+// TUKAJ SE MORAJO STVARI PRIKAZOVATI DINAMOCNO
+const FlatItem = ({ nepremicnina }) => {
+    const { naziv, cena, slug, image_urls, posredovanje, agencija } = nepremicnina;
+
+
     return (
         <div className="text-center col-lg-4 col-12 col-md-6 ">
             <div className="item">
                 <div className="item-image">
-                    <img className="img-fluid" src="/img/product1.jpeg" alt="flat" />
+                    {/*{image_urls.length > 0 && (
+                        <img className="img-fluid" src={image_urls[0]} alt={naziv} />
+                    )}*/}
                 </div>
                 <div className="item-description">
                     <div className="d-flex justify-content-between mb-3">
-                        <span className="item-title">Lorem ipsum dolor sit amet consectetur adipiscing elit</span>
-                        <span className="item-price">$1000</span>
+                        <span className="item-title">{naziv}</span>
+                        <span className="item-price">{cena}€</span>
                     </div>
                     <div className="item-icon d-flex alig-items-center justify-content-between">
                         <div>
-                            <i className="fas fa-check-circle"></i> <span>Lorem ipsum dolor</span>
+                            <i className="fas fa-check-circle"></i> <span>{posredovanje}</span>
                         </div>
                         <div>
-                            <i className="fas fa-check-circle"></i> <span> Lorem </span>
+                            <i className="fas fa-check-circle"></i> <span> {agencija} </span>
                         </div>
                         <Link to={`/flat/${slug}`} className="item-title">
-                            <button className="btn btn-detail">View</button>
+                            <button className="btn btn-detail">Poglej</button>
                         </Link>
                     </div>
                 </div>
