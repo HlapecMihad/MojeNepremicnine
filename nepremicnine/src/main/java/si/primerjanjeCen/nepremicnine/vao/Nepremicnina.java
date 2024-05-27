@@ -36,7 +36,6 @@ public class Nepremicnina {
     private String agencija;
     private List<String> lastnosti;
 
-
     public int getCenaInt() {
         try {
             return Integer.parseInt(cena);
@@ -86,21 +85,25 @@ public class Nepremicnina {
         }
     }
 
-/*    public int getVelikost_zemljisca() {
-        try {
-            return Integer.parseInt(velikost_zemljisca);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }
-
-    public int getVelikost_skupaj() {
-        try {
-            return Integer.parseInt(velikost_skupaj);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }*/
+    /*
+     * public int getVelikost_zemljisca() {
+     * try {
+     * return Double.parseDouble(velikost_zemljisca.replaceAll("[^\\d,\\.]",
+     * "").replace(",", "."));
+     * } catch (NumberFormatException e) {
+     * return 0.0;
+     * }
+     * }
+     * 
+     * public double getVelikost_skupaj() {
+     * try {
+     * return Double.parseDouble(velikost_skupaj.replaceAll("[^\\d,\\.]",
+     * "").replace(",", "."));
+     * } catch (NumberFormatException e) {
+     * return 0.0;
+     * }
+     * }
+     */
 
     public int getLeto_obnove() {
         try {

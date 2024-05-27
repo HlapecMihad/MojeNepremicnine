@@ -60,8 +60,8 @@ def pridobi_podrobnosti_strani(url):
     tip_nepremicnine = soup.select_one(".info_list").find_next("li").get_text(strip=True)
 
     ##### image_urls
-    image_elements = soup.select('.gallery img')
-    image_urls = [korenski_url_podrobno + img['src'] for img in image_elements]
+    image_elements = soup.select('.gallery a')
+    image_urls = [korenski_url + img['href'] for img in image_elements if 'href' in img.attrs]
 
     ##### st_sob
     st_sob_element = soup.select_one(".ico_8")
@@ -144,7 +144,7 @@ def pridobi_podrobnosti_strani(url):
         "velikost_zemljisca": velikost_zemljisca,
         "velikost_skupaj": velikost_skupaj,
         "id_nepremicnine": id_nepremicnine,
-        "imeage_urls": image_urls,
+        "image_urls": image_urls,
         "opis": " ".join(
             [p.get_text(strip=True) for p in soup.select(".main_description .text p")]
         )
