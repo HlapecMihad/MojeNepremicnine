@@ -44,7 +44,7 @@ const FlatDetail = () => {
     thumbnail: url,
   }));
 
-  const mapsUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyCKKEorLNJUECWs9Rm7R_wmJueaz-nXslY&q=${encodeURIComponent(
+  const mapsUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_KEY=${encodeURIComponent(
     lokacija
   )}`;
 
