@@ -86,7 +86,7 @@ public class Nepremicnina {
         }
     }
 
-    public int getVelikost_zemljisca() {
+/*    public int getVelikost_zemljisca() {
         try {
             return Integer.parseInt(velikost_zemljisca);
         } catch (NumberFormatException e) {
@@ -100,7 +100,7 @@ public class Nepremicnina {
         } catch (NumberFormatException e) {
             return 0;
         }
-    }
+    }*/
 
     public int getLeto_obnove() {
         try {

@@ -5,12 +5,12 @@
         "link": "https://nepremicnine.siol.net/prodaja/stanovanje-ljubljana_6073",
         "tip_nepremicnine": "Stanovanje",
         "lokacija": "Ljubljana, Rudnik",
-        "cena": 304587.0,
-        "st_sob": 3.0,
-        "st_spalnic": 2,
-        "st_kopalnic": 1,
-        "leto_izgradnje": 2024,
-        "st_nadstopij": "N/A",
+        "cena": "304587.00",
+        "st_sob": "3",
+        "st_spalnic": "2",
+        "st_kopalnic": "1",
+        "leto_izgradnje": "2024",
+        "st_nadstropij": "N/A",
         "velikost_zemljisca": "N/A",
         "velikost_skupaj": "63,25 m²",
         "id_nepremicnine": "SP13461224988",
@@ -33,17 +33,15 @@
         "leto_obnove": "N/A",
         "agencija": "BAZA agencija d.o.o.",
         "lastnosti": [
-            [
-                "Domofon",
-                "Dvigalo",
-                "Terasa",
-                "Možnost polnilne postaje",
-                "Kolesarnica",
-                "Shramba v kleti",
-                "Shramba",
-                "Alarmni sistem",
-                "Pametni dom"
-            ]
+            "Domofon",
+            "Dvigalo",
+            "Terasa",
+            "Možnost polnilne postaje",
+            "Kolesarnica",
+            "Shramba v kleti",
+            "Shramba",
+            "Alarmni sistem",
+            "Pametni dom"
         ]
     }
 ]
