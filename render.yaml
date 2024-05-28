@@ -42,7 +42,7 @@ services:
     plan: free
     disk:
       name: mongo_data
-      mountPath: /data/db
+      mountPath: /nepremicnine/nepremicnine
       sizeGB: 10
     envVars:
       - key: MONGO_INITDB_ROOT_USERNAME
