@@ -38,11 +38,12 @@ services:
   - type: web
     name: mongo
     env: docker
-    image: mongo:4.4
+    dockerfilePath: ""
+    image: "mongo:4.4"
     plan: free
     disk:
       name: mongo_data
-      mountPath: /nepremicnine/nepremicnine
+      mountPath: /data/db
       sizeGB: 10
     envVars:
       - key: MONGO_INITDB_ROOT_USERNAME
