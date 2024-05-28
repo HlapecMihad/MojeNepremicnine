@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-# Define the directory paths
 base_dir = os.path.dirname(os.path.abspath(__file__))
 json_dir = os.path.join(base_dir, '..', 'JSON')
 
@@ -25,7 +24,7 @@ def Linkprodaja():
         print("The last page number is:", last_page_number)
     else:
         print("No pagination links found.")
-        last_page_number = 1  # Default to 1 if no pagination found
+        last_page_number = 1 
 
     all_links = []
 

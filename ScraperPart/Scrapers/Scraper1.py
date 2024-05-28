@@ -9,18 +9,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
-# Define the directory paths
 base_dir = os.path.dirname(os.path.abspath(__file__))
 json_dir = os.path.join(base_dir, '..', 'JSON')
 
-# Initialize the WebDriver
+
 driver = webdriver.Edge()
 
-# URL of the website
+
 base_url = 'https://www.re-max.si/PublicListingList.aspx'
 driver.get(base_url)
 
-# Click the "Allow Cookies" button if it appears
 try:
     WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"))
@@ -28,7 +26,7 @@ try:
 except Exception as e:
     print("No 'Allow Cookies' button found or error clicking it:", e)
 
-# Function to transform the property type
+
 def transform_tip_nepremicnine(tip_nepremicnine: str) -> str:
     mapping = {
         'Pisarna': 'Poslovni prostor',
@@ -76,7 +74,7 @@ def scrape_page() -> list:
 
     return properties
 
-# Function to scrape individual property data
+
 def scrape_individual_page(property_link: str) -> dict:
     try:
         driver.get(property_link)

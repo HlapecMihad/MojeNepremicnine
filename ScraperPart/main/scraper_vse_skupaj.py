@@ -16,7 +16,7 @@ def run_other_script(script_name):
     else:
         print(f"Error: Script '{script_name}' not found in the directory.")
 
-# Function to combine JSON files
+
 def combine_json_files(json_files):
     combined_data = []
     for file in json_files:
@@ -34,14 +34,14 @@ def combine_json_files(json_files):
             print(f"Error: JSON file '{file}' not found.")
     return combined_data
 
-# Function to save combined JSON data to a file
+
 def save_combined_json(data, output_file):
     output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), output_file)
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
     print(f"Combined JSON data saved to '{output_file}'")
 
-# Function to send data to MongoDB
+
 def send_to_mongodb(data):
     print("Sending data to MongoDB...")
     client = pymongo.MongoClient("mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/")
@@ -62,12 +62,12 @@ if __name__ == "__main__":
         "../Scrapers/Scrapper_21C.py"
     ]
 
-    # Run the scripts in parallel
+
     with ThreadPoolExecutor() as executor:
         future = executor.map(run_other_script, script_to_run)
-        executor.shutdown(wait=True)  # Ensure all scripts have finished
+        executor.shutdown(wait=True)  
     
-    # Combine JSON files
+
     json_files = [
         "../JSON/siol_oddaja.json",
         "../JSON/siol_prodaja.json",
@@ -77,9 +77,9 @@ if __name__ == "__main__":
 
     combined_data = combine_json_files(json_files)
     
-    # Save combined JSON data to a file
+
     combined_json_file = "../JSON/combined_data.json"
     save_combined_json(combined_data, combined_json_file)
 
-    # Send combined data to MongoDB
+
     send_to_mongodb(combined_data)
