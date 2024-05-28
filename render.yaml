@@ -35,10 +35,10 @@ services:
       - key: MONGO_URI
         value: mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
 
-  - type: web
+  - type: database
     name: mongo
-    image: mongo:4.4
     plan: free
+    image: mongo:4.4
     disk:
       name: mongo_data
       mountPath: /data/db
