@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./FrontEnd/reactjs-real-estate-template-master
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./FrontEnd/reactjs-real-estate-template-master:/app
+      - /app/node_modules
+
+  backend:
+    build:
+      context: ./nepremicnine
+      dockerfile: Dockerfile
+    ports:
+      - "8180:8180"
+    environment:
+      - MONGO_URI=mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
+    depends_on:
+      - mongo
+
+  python:
+    build:
+      context: ./ScraperPart
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - MONGO_URI=mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
+    depends_on:
+      - backend
+      - mongo
+
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/nepremicnine/nepremicnine
+
+volumes:
+  mongo_data:
