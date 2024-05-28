@@ -1,0 +1,58 @@
+services:
+  - type: web
+    name: frontend
+    env: node
+    repo: https://github.com/HlapecMihad/PRAKTIKUM2
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    buildContext: ./FrontEnd/reactjs-real-estate-template-master
+    dockerfilePath: ./FrontEnd/reactjs-real-estate-template-master/Dockerfile
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: development
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  - type: web
+    name: backend
+    env: docker
+    repo: https://github.com/HlapecMihad/PRAKTIKUM2
+    buildContext: ./nepremicnine
+    dockerfilePath: ./nepremicnine/Dockerfile
+    plan: free
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
+    dependsOn:
+      - name: mongo
+
+  - type: web
+    name: python
+    env: docker
+    repo: https://github.com/HlapecMihad/PRAKTIKUM2
+    buildContext: ./ScraperPart
+    dockerfilePath: ./ScraperPart/Dockerfile
+    plan: free
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
+    dependsOn:
+      - name: backend
+      - name: mongo
+
+  - type: private
+    name: mongo
+    image: mongo:4.4
+    plan: free
+    disk:
+      name: mongo_data
+      mountPath: /data/db
+      sizeGB: 10
+    envVars:
+      - key: MONGO_INITDB_ROOT_USERNAME
+        value: admin
+      - key: MONGO_INITDB_ROOT_PASSWORD
+        value: admin
