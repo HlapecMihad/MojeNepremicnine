@@ -43,7 +43,7 @@ services:
       - name: backend
       - name: mongo
 
-  - type: private
+  - type: public
     name: mongo
     image: mongo:4.4
     plan: free
