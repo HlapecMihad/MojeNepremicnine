@@ -1,0 +1,15 @@
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+            .allowedOrigins("https://praktikum2-deploy-fnkc202nb-lukas-projects-10bd2c33.vercel.app")
+            .allowedMethods("GET", "POST", "PUT", "DELETE")
+            .allowedHeaders("*");
+    }
+}
