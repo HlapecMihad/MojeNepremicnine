@@ -34,7 +34,6 @@ services:
     env: docker
     repo: https://github.com/your-repo/mongo
     branch: main
-    startCommand: docker run -p 27017:27017 mongo:4.4
     disk:
       name: mongo_data
       mountPath: /nepremicnine/nepremicnine
