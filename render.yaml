@@ -9,11 +9,7 @@ services:
     envVars:
       - key: NODE_ENV
         value: development
-    volumes:
-      - path: /app
-        mountPath: ./FrontEnd/reactjs-real-estate-template-master
-      - path: /app/node_modules
-
+  
   - type: web
     name: backend
     env: docker
