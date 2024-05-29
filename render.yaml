@@ -39,7 +39,7 @@ services:
     name: mongo
     env: docker
     dockerfilePath: ""
-    image: "mongo:4.4"
+    image: mongo
     plan: free
     disk:
       name: mongo_data
