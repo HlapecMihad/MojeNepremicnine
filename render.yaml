@@ -5,18 +5,16 @@ services:
     repo: https://github.com/your-repo/frontend
     branch: main
     buildCommand: docker build -t frontend ./FrontEnd/reactjs-real-estate-template-master
-    startCommand: docker run -p 3000:3000 frontend
     envVars:
       - key: NODE_ENV
         value: development
-  
+
   - type: web
     name: backend
     env: docker
     repo: https://github.com/your-repo/backend
     branch: main
     buildCommand: docker build -t backend ./nepremicnine
-    startCommand: docker run -p 8180:8180 backend
     envVars:
       - key: MONGO_URI
         value: mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
@@ -27,7 +25,6 @@ services:
     repo: https://github.com/your-repo/python
     branch: main
     buildCommand: docker build -t python ./ScraperPart
-    startCommand: docker run -p 80:80 python
     envVars:
       - key: MONGO_URI
         value: mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
