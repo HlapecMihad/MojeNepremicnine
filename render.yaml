@@ -1,26 +1,26 @@
 services:
   - type: web
     name: frontend
-    env: node
-    repo: https://github.com/HlapecMihad/PRAKTIKUM2
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    dockerfilePath: ./FrontEnd/reactjs-real-estate-template-master/Dockerfile
-    plan: free
+    env: docker
+    repo: https://github.com/your-repo/frontend
+    branch: main
+    buildCommand: docker build -t frontend ./FrontEnd/reactjs-real-estate-template-master
+    startCommand: docker run -p 3000:3000 frontend
     envVars:
       - key: NODE_ENV
         value: development
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    volumes:
+      - path: /app
+        mountPath: ./FrontEnd/reactjs-real-estate-template-master
+      - path: /app/node_modules
 
   - type: web
     name: backend
     env: docker
-    repo: https://github.com/HlapecMihad/PRAKTIKUM2
-    dockerfilePath: ./nepremicnine/Dockerfile
-    plan: free
+    repo: https://github.com/your-repo/backend
+    branch: main
+    buildCommand: docker build -t backend ./nepremicnine
+    startCommand: docker run -p 8180:8180 backend
     envVars:
       - key: MONGO_URI
         value: mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
@@ -28,25 +28,21 @@ services:
   - type: web
     name: python
     env: docker
-    repo: https://github.com/HlapecMihad/PRAKTIKUM2
-    dockerfilePath: ./ScraperPart/Dockerfile
-    plan: free
+    repo: https://github.com/your-repo/python
+    branch: main
+    buildCommand: docker build -t python ./ScraperPart
+    startCommand: docker run -p 80:80 python
     envVars:
       - key: MONGO_URI
         value: mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/nepremicnine?retryWrites=true&w=majority
 
-  - type: web
+  - type: pserv
     name: mongo
     env: docker
-    dockerfilePath: ""
-    image: mongo
-    plan: free
+    repo: https://github.com/your-repo/mongo
+    branch: main
+    startCommand: docker run -p 27017:27017 mongo:4.4
     disk:
       name: mongo_data
-      mountPath: /data/db
+      mountPath: /nepremicnine/nepremicnine
       sizeGB: 10
-    envVars:
-      - key: MONGO_INITDB_ROOT_USERNAME
-        value: admin
-      - key: MONGO_INITDB_ROOT_PASSWORD
-        value: admin
