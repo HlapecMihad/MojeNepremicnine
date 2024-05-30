@@ -56,17 +56,19 @@ const ComparisonPage = () => {
   return (
     <div className="comparison-page">
       <h1 className="middle">Primerjava nepremičnin</h1>
-      <button
-        onClick={toggleHighlight}
-        className="toggle-highlight-button middle"
-      >
-        {highlightDifferences ? "Skrij razlike" : "Prikaži razlike"}
-      </button>
+
       <div className="comparison-table">
         <table className="table table-bordered comparison-table-fixed">
           <thead>
             <tr>
-              <th className="attribute-column"></th>
+              <th className="attribute-column special-moj">
+                <button
+                  onClick={toggleHighlight}
+                  className="toggle-highlight-button middle center-moj"
+                >
+                  {highlightDifferences ? "Skrij razlike" : "Prikaži razlike"}
+                </button>
+              </th>
               {comparisonList.map((item) => (
                 <th key={item.id} className="comparison-column">
                   <div className="property-header">
