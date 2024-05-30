@@ -784,7 +784,7 @@ section {
 .toggle-highlight-button {
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #364465;
   color: white;
   border: none;
   border-radius: 5px;
@@ -793,7 +793,7 @@ section {
 }
 
 .toggle-highlight-button:hover {
-  background-color: #0056b3;
+  color: black;
 }
 
 .comparison-table {
@@ -815,6 +815,17 @@ section {
   border: 1px solid #dee2e6;
   text-align: center;
   vertical-align: middle;
+}
+.special-moj{
+  position: relative;
+}
+.center-moj {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .comparison-table-fixed th {

@@ -4,10 +4,13 @@ import { ComparisonContext } from "../other/ComparisonContext";
 
 const FlatItem = ({ nepremicnina }) => {
   const { id, naziv, cena, image_urls, posredovanje, agencija } = nepremicnina;
-  const { comparisonList, addToComparison } = useContext(ComparisonContext);
+  const { comparisonList, addToComparison, removeFromComparison } =
+    useContext(ComparisonContext);
 
   const formattedCena =
     posredovanje === "Oddaja" ? `${cena}€/mesec` : `${cena}€`;
+
+  const isInComparison = comparisonList.some((item) => item.id === id);
 
   const handleAddToComparison = () => {
     if (comparisonList.length >= 3) {
@@ -15,6 +18,10 @@ const FlatItem = ({ nepremicnina }) => {
     } else {
       addToComparison(nepremicnina);
     }
+  };
+
+  const handleRemoveFromComparison = () => {
+    removeFromComparison(id);
   };
 
   return (
@@ -44,12 +51,21 @@ const FlatItem = ({ nepremicnina }) => {
             >
               <button className="btn btn-detail">Poglej</button>
             </Link>
-            <button
-              onClick={handleAddToComparison}
-              className="btn btn-comparison"
-            >
-              <i className="fas fa-exchange-alt"></i> Primerjaj
-            </button>
+            {isInComparison ? (
+              <button
+                onClick={handleRemoveFromComparison}
+                className="btn btn-comparison"
+              >
+                <i className="fas fa-trash-alt"></i> Odstrani
+              </button>
+            ) : (
+              <button
+                onClick={handleAddToComparison}
+                className="btn btn-comparison"
+              >
+                <i className="fas fa-exchange-alt"></i> Primerjaj
+              </button>
+            )}
           </div>
         </div>
       </div>

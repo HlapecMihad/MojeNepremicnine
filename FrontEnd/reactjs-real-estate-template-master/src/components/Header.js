@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ComparisonContext } from "../other/ComparisonContext";
 
 const Header = () => {
+  const { comparisonList } = useContext(ComparisonContext);
+
   return (
     <div className="header">
       <div className="container">
@@ -29,6 +32,14 @@ const Header = () => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/primerjanje">
                     Primerjanje
+                    {comparisonList.length > 0 && (
+                      <span
+                        className="badge bg-secondary ms-1"
+                        style={{ verticalAlign: "middle" }}
+                      >
+                        {comparisonList.length}
+                      </span>
+                    )}
                   </Link>
                 </li>
                 {/*<li className="nav-item">
