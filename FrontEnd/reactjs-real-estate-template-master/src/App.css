@@ -945,13 +945,13 @@ tbody tr:nth-child(even) {
 }
 
 .btn-detail {
-  background-color: #007bff;
+  background-color: #364465;
   color: white;
   transition: background-color 0.3s ease;
 }
 
 .btn-detail:hover {
-  background-color: #0056b3;
+  color: black;
 }
 
 .btn-comparison {
