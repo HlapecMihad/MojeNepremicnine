@@ -4,8 +4,7 @@ const Subscribe = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6">
-                        <p className="title">Subscribe</p>
-                        <span className="sbs-description">Subscribe Description</span>
+                        <p className="title">Naroči se</p>
                     </div>
                     <div className="col-lg-6">
                         <div className="d-flex align-items-center justify-content-between w-100 h-100">
@@ -14,7 +13,7 @@ const Subscribe = () => {
                                     <input type="text" className="w-100 sbs-area-inp" />
                                 </div>
                                 <div className="col-lg-3 d-flex align-items-center justify-content-between ">
-                                    <input type="submit" className="w-100 h-100 btn btn-dark" value="Send" />
+                                    <input type="submit" className="w-100 h-100 btn btn-dark" value="Pošlji" />
                                 </div>
                             </div>
                         </div>

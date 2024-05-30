@@ -1,8 +1,13 @@
 import React from "react";
+import '../App.css';
 import ImageGallery from "react-image-gallery";
 import { useLocation } from "react-router-dom";
 import "react-image-gallery/styles/css/image-gallery.css";
 import useScrollToTop from "../other/useScrollToTop";
+import { FaBed, FaBath, FaCalendarAlt, FaHome, FaRulerCombined, FaBuilding } from "react-icons/fa";
+import {Link} from "react-router-dom"
+import CallToAction from "./CallToAction";
+
 
 const FlatDetail = () => {
   useScrollToTop();
@@ -82,7 +87,7 @@ const FlatDetail = () => {
                 </span>
               </div>
               <div>
-                <span className="fd-price">{formattedCena}€</span>
+                <span className="fd-price">{formattedCena} €</span>
               </div>
             </div>
             <ImageGallery
@@ -99,57 +104,65 @@ const FlatDetail = () => {
                   <p>{opis}</p>
                 </div>
                 <div className="fd-item fd-property-detail">
-                  <h4>Pregled</h4>
-                  <div className="row">
-                    {st_sob !== 0 && (
-                      <div className="col-lg-4">
-                        <span>Število sob: </span>
-                        <span>{st_sob}</span>
-                      </div>
-                    )}
-                    {st_spalnic !== 0 && (
-                      <div className="col-lg-4">
-                        <span>Število spalnic: </span>
-                        <span>{st_spalnic}</span>
-                      </div>
-                    )}
-                    {st_kopalnic !== 0 && (
-                      <div className="col-lg-4">
-                        <span>Število kopalnic: </span>
-                        <span>{st_kopalnic}</span>
-                      </div>
-                    )}
-                    {leto_izgradnje !== 0 && (
-                      <div className="col-lg-4">
-                        <span>Leto izgradnje: </span>
-                        <span>{leto_izgradnje}</span>
-                      </div>
-                    )}
-                    {st_nadstropij !== 0 && (
-                      <div className="col-lg-4">
-                        <span>Število nadstropij: </span>
-                        <span>{st_nadstropij}</span>
-                      </div>
-                    )}
-                    {velikost_zemljisca !== "N/A" && (
-                      <div className="col-lg-4">
-                        <span>Velikost zemljišča: </span>
-                        <span>{velikost_zemljisca.split(" ")[0]} m²</span>
-                      </div>
-                    )}
-                    {velikost_skupaj !== "N/A" && (
-                      <div className="col-lg-4">
-                        <span>Velikost skupaj: </span>
-                        <span>{velikost_skupaj.split(" ")[0]} m²</span>
-                      </div>
-                    )}
-                    {leto_obnove !== 0 && (
-                      <div className="col-lg-4">
-                        <span>Leto obnove: </span>
-                        <span>{leto_obnove}</span>
-                      </div>
-                    )}
-                  </div>
+                    <h4>Pregled</h4>
+                    <div className="row">
+                        {st_sob !== 0 && (
+                            <div className="col-lg-4">
+                                <FaHome className="icon" />
+                                <span>Število sob: </span>
+                                <span>{st_sob}</span>
+                            </div>
+                        )}
+                        {st_spalnic !== 0 && (
+                            <div className="col-lg-4">
+                                <FaBed className="icon" />
+                                <span>Število spalnic: </span>
+                                <span>{st_spalnic}</span>
+                            </div>
+                        )}
+                        {st_kopalnic !== 0 && (
+                            <div className="col-lg-4">
+                                <FaBath className="icon" />
+                                <span>Število kopalnic: </span>
+                                <span>{st_kopalnic}</span>
+                            </div>
+                        )}
+                        {leto_izgradnje !== 0 && (
+                            <div className="col-lg-4">
+                                <FaCalendarAlt className="icon" />
+                                <span>Leto izgradnje: </span>
+                                <span>{leto_izgradnje}</span>
+                            </div>
+                        )}
+                        {st_nadstropij !== 0 && (
+                            <div className="col-lg-4">
+                                <FaBuilding className="icon" />
+                                <span>Število nadstropij: </span>
+                                <span>{st_nadstropij}</span>
+                            </div>
+                        )}
+                        {velikost_zemljisca !== "N/A" && (
+                            <div className="col-lg-4">
+                                <FaRulerCombined className="icon" />
+                                <span>Velikost zemljišča: </span>
+                                <span>{velikost_zemljisca.split(" ")[0]} m²</span>
+                            </div>
+                        )}
+                        {velikost_skupaj !== "N/A" && (
+                            <div className="col-lg-4">
+                                <FaRulerCombined className="icon" />
+                                <span>Velikost skupaj: </span>
+                                <span>{velikost_skupaj.split(" ")[0]} m²</span>
+                            </div>
+                        )}
+                        {leto_obnove !== 0 && (
+                            <div className="col-lg-4">
+                                <FaCalendarAlt className="icon" />
+                                <span>Leto obnove: </span>
+                                <span>{leto_obnove}</span>
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div className="fd-item fd-features">
                   <h4>Lastnosti</h4>
@@ -180,10 +193,7 @@ const FlatDetail = () => {
                     <h6>{agencija}</h6>
                   </div>
                   <div className="link-item">
-                    <span>Link do originalne strani: </span>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      {link}
-                    </a>
+                    <CallToAction link={link} text="Klikni tukaj za več informacij" />
                   </div>
                 </div>
                 {/*<div className="fd-sidebar-item">

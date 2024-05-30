@@ -769,3 +769,47 @@ section {
   margin-left: 0px; 
   padding-left: 0px;
 }
+
+
+
+
+
+/*    #################   naši stili*/
+.icon-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* razmak med ikono in besedilom */
+}
+
+.icon-text .icon {
+    font-size: 2.5rem; /* velikost ikon, prilagodite po potrebi */
+    margin-right: 50px;
+}
+
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Prilagodite po potrebi */
+}
+
+.cta-text {
+    margin-bottom: 10px; /* Razmak med besedilom in gumbom */
+    font-size: 1.2rem; /* Prilagodite velikost pisave po potrebi */
+    text-align: center; /* Poravnava besedila na sredino */
+}
+
+.cta-button {
+    background-color: #007bff; /* Barva ozadja gumba */
+    color: white; /* Barva besedila gumba */
+    border: none; /* Odstrani privzeti rob gumba */
+    padding: 10px 20px; /* Notranji rob gumba */
+    font-size: 1rem; /* Velikost pisave gumba */
+    border-radius: 5px; /* Zaobljeni robovi gumba */
+    cursor: pointer; /* Kazalec se spremeni ob premiku nad gumbom */
+    transition: background-color 0.3s; /* Prehod za spremembo barve */
+}
+
+.cta-button:hover {
+    background-color: #0056b3; /* Barva ozadja gumba ob premiku kazalca nad gumb */
+}
