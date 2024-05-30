@@ -113,59 +113,78 @@ const FlatDetail = () => {
                   <h4>Pregled</h4>
                   <div className="row">
                     {st_sob !== 0 && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaHome className="icon" />
-                        <span>Število sob: </span>
-                        <span>{st_sob}</span>
+                        <div className="ms-2">
+                            <div><b>Število sob: </b></div>
+                            <div>{st_sob}</div>
+                        </div>
+
                       </div>
                     )}
                     {st_spalnic !== 0 && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaBed className="icon" />
-                        <span>Število spalnic: </span>
-                        <span>{st_spalnic}</span>
+                        <div className="ms-2">
+                            <div><b>Število spalnic: </b></div>
+                            <div>{st_spalnic}</div>
+                        </div>
                       </div>
                     )}
                     {st_kopalnic !== 0 && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaBath className="icon" />
-                        <span>Število kopalnic: </span>
-                        <span>{st_kopalnic}</span>
+                        <div className="ms-2">
+                            <div><b>Število kopalnic: </b></div>
+                            <div>{st_kopalnic}</div>
+                        </div>
                       </div>
                     )}
                     {leto_izgradnje !== 0 && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaCalendarAlt className="icon" />
-                        <span>Leto izgradnje: </span>
-                        <span>{leto_izgradnje}</span>
+                        <div className="ms-2">
+                            <div><b>Leto izgradnje: </b></div>
+                            <div>{leto_izgradnje}</div>    
+                        </div>
+
                       </div>
                     )}
                     {st_nadstropij !== 0 && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaBuilding className="icon" />
-                        <span>Število nadstropij: </span>
-                        <span>{st_nadstropij}</span>
+                        <div className="ms-2">
+                            <span><b>Število nadstropij: </b></span>
+                            <span>{st_nadstropij}</span>
+                        </div>
                       </div>
                     )}
                     {velikost_zemljisca !== "N/A" && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaRulerCombined className="icon" />
-                        <span>Velikost zemljišča: </span>
-                        <span>{velikost_zemljisca.split(" ")[0]} m²</span>
+                        <div className="ms-2">
+                            <div><b>Velikost zemljišča: </b></div>
+                            <div>{velikost_zemljisca.split(" ")[0]} m²</div>
+                        </div>
+
                       </div>
                     )}
                     {velikost_skupaj !== "N/A" && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaRulerCombined className="icon" />
-                        <span>Velikost skupaj: </span>
-                        <span>{velikost_skupaj.split(" ")[0]} m²</span>
+                        <div className="ms-2">
+                            <div><b>Velikost skupaj: </b></div>
+                            <div>{velikost_skupaj.split(" ")[0]} m²</div> 
+                        </div>
                       </div>
                     )}
                     {leto_obnove !== 0 && (
-                      <div className="col-lg-4">
+                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaCalendarAlt className="icon" />
-                        <span>Leto obnove: </span>
-                        <span>{leto_obnove}</span>
+                        <div className="ms-2">
+                            <div><b>Leto obnove: </b></div>
+                            <div>{leto_obnove}</div>
+                        </div>
                       </div>
                     )}
                   </div>

@@ -1001,3 +1001,57 @@ tbody tr:nth-child(even) {
 .cta-button:hover {
     background-color: #0056b3; /* Barva ozadja gumba ob premiku kazalca nad gumb */
 }
+
+
+
+
+
+
+
+
+
+
+.icon {
+    font-size: 1.5rem; /* Velikost ikon, prilagodite po potrebi */
+    margin-right: 0.5rem; /* Razmak med ikono in besedilom */
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.mb-3 {
+    margin-bottom: 1rem; /* Razmak med vrsticami, prilagodite po potrebi */
+}
+
+.ms-2 {
+    margin-left: 0.5rem; /* Razmak med ikono in besedilom */
+}
+
+.flaticon-bed:before {
+    content: '\f236'; /* Unicode ali class za ustrezno ikono */
+}
+
+.flaticon-bath:before {
+    content: '\f2cd'; /* Unicode ali class za ustrezno ikono */
+}
+
+.flaticon-calendar:before {
+    content: '\f133'; /* Unicode ali class za ustrezno ikono */
+}
+
+.flaticon-house:before {
+    content: '\f015'; /* Unicode ali class za ustrezno ikono */
+}
+
+.flaticon-ruler:before {
+    content: '\f545'; /* Unicode ali class za ustrezno ikono */
+}
+
+.flaticon-parking:before {
+    content: '\f540'; /* Unicode ali class za ustrezno ikono */
+}
