@@ -19,7 +19,7 @@ function App() {
           <Header />
 
           <Route path="/" exact component={Home} />
-          <Route path="/contact" component={ComparisonPage} />
+          <Route path="/primerjanje" component={ComparisonPage} />
           <Route path="/about" component={About} />
           <Route path="/blog" exact component={Blog} />
           <Route path="/blog/:id" component={BlogDetail} />
