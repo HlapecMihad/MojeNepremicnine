@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ComparisonContext } from "../other/ComparisonContext";
+import noImage from "../noImage.jpg";
 
 const FlatItem = ({ nepremicnina }) => {
   const { id, naziv, cena, image_urls, posredovanje, agencija } = nepremicnina;
@@ -24,11 +25,13 @@ const FlatItem = ({ nepremicnina }) => {
     removeFromComparison(id);
   };
 
+  const imageUrl = image_urls.length > 0 ? image_urls[0] : noImage;
+
   return (
     <div className="text-center col-lg-4 col-12 col-md-6">
       <div className="item">
         <div className="item-image">
-          <img className="img-fluid" src={image_urls[0]} alt={naziv} />
+          <img className="img-fluid" src={imageUrl} alt={naziv} />
         </div>
         <div className="item-description">
           <div className="item-title">
