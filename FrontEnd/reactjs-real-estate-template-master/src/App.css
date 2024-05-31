@@ -790,7 +790,7 @@
 }
 
 .toggle-highlight-button:hover {
-  color: black;
+  color: gray;
 }
 
 .comparison-table {
