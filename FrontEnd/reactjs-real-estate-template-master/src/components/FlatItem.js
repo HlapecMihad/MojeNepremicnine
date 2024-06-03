@@ -10,13 +10,20 @@ const FlatItem = ({ nepremicnina }) => {
   return (
     <div className="text-center col-lg-4 col-12 col-md-6 ">
       <div className="item">
-        <div className="item-image">
-          {<img className="img-fluid" src={image_urls[0]} alt={naziv} />}
-        </div>
+         <Link
+              to={{ pathname: `/nepremicnina/${id}`, state: { nepremicnina } }}
+              className="item-title"
+            >
+         <div className="item-image">
+            {<img className="img-fluid" src={image_urls[0]} alt={naziv} />}
+         </div>
+        </Link>
         <div className="item-description">
+         <div>
+         <span className="item-price">{formattedCena}</span>
+         </div>
           <div className="d-flex justify-content-between mb-3">
             <span className="item-title">{naziv}</span>
-            <span className="item-price">{formattedCena}</span>
           </div>
           <div className="item-icon d-flex alig-items-center justify-content-between">
             <div>
