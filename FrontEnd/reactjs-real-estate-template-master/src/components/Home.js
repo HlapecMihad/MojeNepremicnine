@@ -10,7 +10,7 @@ const Home=()=>{
     return (
         <React.Fragment>
             <Banner/>
-            <FlatList/>
+            {/*<FlatList/>*/}
             {/*<BestFlatList/>*/}
             <Subscribe/>
             {/*<TeamList/>*/}

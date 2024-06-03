@@ -11,9 +11,11 @@ import BlogDetail from "./components/BlogDetail";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ComparisonProvider } from "./other/ComparisonContext";
 import ComparisonPage from "./components/ComparisonPage";
+import { NepremicnineProvider } from "./other/NepremicnineContext";
 
 function App() {
   return (
+   <NepremicnineProvider>
     <ComparisonProvider>
       <Router>
         <div className="App">
@@ -31,6 +33,7 @@ function App() {
       </div>
     </Router>
     </ComparisonProvider>
+    </NepremicnineProvider>
   );
 }
 
