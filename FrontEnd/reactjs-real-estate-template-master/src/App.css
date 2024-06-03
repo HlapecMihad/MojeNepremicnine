@@ -61,7 +61,7 @@
 }
 .search-area{
   background-color: white;
-  padding: 5px 20px;
+  padding: 1px 10px;
   box-shadow: 0 10px 12px rgba(77,60,160,0.1);
   border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -183,13 +183,14 @@
 }
 
 .section-all-re .item-title{
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 14px;
   text-align: left;
   color: #364465;
 }
 .section-all-re .item-price{
   font-weight: bold;
-  font-size: 17px;
+  font-size: 15px;
   color: #364465;
   margin-left:5px;
 }
@@ -766,6 +767,7 @@
   margin-left: 0px; 
   padding-left: 0px;
 }
+<<<<<<< HEAD
 .comparison-page {
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -1063,3 +1065,23 @@ tbody tr:nth-child(even) {
 .flaticon-parking:before {
     content: '\f540'; /* Unicode ali class za ustrezno ikono */
 }
+=======
+
+.img-fluid {
+   transition: transform .7s;
+}
+
+.img-fluid:hover {
+   transform: scale(1.2);
+}
+
+.btn-filter{
+   color: black;
+   padding: 12px 25px;
+   text-decoration:none;
+ }
+
+ .btn-filter:hover{
+   color: grey;
+ }
+>>>>>>> refs/heads/Filtri
