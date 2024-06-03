@@ -192,7 +192,7 @@
   font-weight: bold;
   font-size: 15px;
   color: #364465;
-  margin-left:5px;
+  text-align: left;
 }
 .item .fas{
   color:#364465;
@@ -767,7 +767,6 @@
   margin-left: 0px; 
   padding-left: 0px;
 }
-<<<<<<< HEAD
 .comparison-page {
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -1065,7 +1064,6 @@ tbody tr:nth-child(even) {
 .flaticon-parking:before {
     content: '\f540'; /* Unicode ali class za ustrezno ikono */
 }
-=======
 
 .img-fluid {
    transition: transform .7s;
@@ -1084,4 +1082,3 @@ tbody tr:nth-child(even) {
  .btn-filter:hover{
    color: grey;
  }
->>>>>>> refs/heads/Filtri

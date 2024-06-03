@@ -34,9 +34,11 @@ const FlatItem = ({ nepremicnina }) => {
           <img className="img-fluid" src={imageUrl} alt={naziv} />
         </div>
         <div className="item-description">
+        <div>
+         <span className="item-price">{formattedCena}</span>
+         </div>
           <div className="item-title">
-            <span>{naziv}</span>
-            <span>{formattedCena}</span>
+            <span className="item-title">{naziv}</span>
           </div>
           <div className="item-icon">
             <div>
