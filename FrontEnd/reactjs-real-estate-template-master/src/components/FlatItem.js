@@ -54,7 +54,7 @@ const FlatItem = ({ nepremicnina }) => {
               to={{ pathname: `/nepremicnina/${id}`, state: { nepremicnina } }}
               className="item-title"
             >
-              <button className="btn btn-detail">Poglej</button>
+              <button className="btn-1 btn-detail">Poglej</button>
             </Link>
             {isInComparison ? (
               <button

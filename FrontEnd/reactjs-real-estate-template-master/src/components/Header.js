@@ -1,9 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ComparisonContext } from "../other/ComparisonContext";
+import UporabnikDropdown from './UporabnikDropdown';
 
 const Header = () => {
   const { comparisonList } = useContext(ComparisonContext);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loggedInUser = sessionStorage.getItem("user");
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
+    setUser(null);
+  };
 
   return (
     <div className="header">
@@ -42,23 +57,19 @@ const Header = () => {
                     )}
                   </Link>
                 </li>
-                {/*<li className="nav-item">
-                                    <Link  className="nav-link" to="/blog">Blog</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link  className="nav-link" to="/about">O nas</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="#">Kategorije <i className="fas fa-chevron-down"></i></Link>
-                                    <ul className="sub-ul">
-                                        <li><Link to="#">item</Link></li>
-                                        <li><Link to="#">item</Link></li>
-                                        <li><Link to="#">item</Link></li>
-                                    </ul>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/contact">Kontakt</Link>
-                                </li>*/}
+                {user ? (
+                  <li className="nav-item">
+                    <UporabnikDropdown user={user} handleLogout={handleLogout} />
+                  </li>
+                ) : (
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/prijava">
+                        Prijava
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
