@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 const UporabnikDropdown = ({ user, handleLogout }) => {
@@ -13,7 +14,8 @@ const UporabnikDropdown = ({ user, handleLogout }) => {
 
       <Dropdown.Menu>
         <Dropdown.Item onClick={() => history.push('/nastavitve')}>Nastavitve</Dropdown.Item>
-        <Dropdown.Item onClick={() => history.push('/priljubljene')}>Priljubljene</Dropdown.Item>
+        <Dropdown.Item ><Link to="/priljubljenje">Favorites</Link>
+</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={handleLogout}>Odjava</Dropdown.Item>
       </Dropdown.Menu>

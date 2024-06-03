@@ -14,6 +14,7 @@ import ComparisonPage from "./components/ComparisonPage";
 import Registracija from "./components/Registracija";
 import Prijava from "./components/Prijava";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FavoriteProperties from './components/FavoriteProperties';
 
 
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/filtri" component={Filter} />
             <Route path="/registracija" component={Registracija} />
             <Route path="/prijava" component={Prijava} />
+            <Route path="/priljubljenje" component={FavoriteProperties} />
           </Switch>
           <Footer />
         </div>
