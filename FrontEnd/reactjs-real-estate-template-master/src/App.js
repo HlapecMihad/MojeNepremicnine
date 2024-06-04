@@ -11,26 +11,31 @@ import BlogDetail from "./components/BlogDetail";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ComparisonProvider } from "./other/ComparisonContext";
 import ComparisonPage from "./components/ComparisonPage";
+import SearchResult from "./components/SearchResult";
+import { NepremicnineProvider } from "./other/NepremicnineContext";
 
 function App() {
   return (
-    <ComparisonProvider>
-      <Router>
-        <div className="App">
-          <Header />
+    <NepremicnineProvider>
+      <ComparisonProvider>
+        <Router>
+          <div className="App">
+            <Header />
 
-          <Route path="/" exact component={Home} />
-          <Route path="/primerjanje" component={ComparisonPage} />
-          <Route path="/about" component={About} />
-          <Route path="/blog" exact component={Blog} />
-          <Route path="/blog/:id" component={BlogDetail} />
-          <Route path="/nepremicnina/:id" component={FlatDetail} />
-          <Route path="/filtri" component={Filter} />
+            <Route path="/" exact component={Home} />
+            <Route path="/primerjanje" component={ComparisonPage} />
+            <Route path="/about" component={About} />
+            <Route path="/blog" exact component={Blog} />
+            <Route path="/blog/:id" component={BlogDetail} />
+            <Route path="/nepremicnina/:id" component={FlatDetail} />
+            <Route path="/filtri" component={Filter} />
+            <Route path="/searchResult" component={SearchResult} />
 
-          <Footer />
-      </div>
-    </Router>
-    </ComparisonProvider>
+            <Footer />
+          </div>
+        </Router>
+      </ComparisonProvider>
+    </NepremicnineProvider>
   );
 }
 

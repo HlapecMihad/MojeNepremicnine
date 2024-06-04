@@ -1,15 +1,10 @@
-import Title from "./Title";
+import React, { useContext, useEffect, useState } from "react";
 import FlatItem from "./FlatItem";
-import React, { useEffect, useState } from "react";
 import api from "../services/api";
+import { NepremicnineContext } from "../other/NepremicnineContext";
 
 const FlatList = () => {
-  const title = {
-    text: "NASLOV",
-    description: "Text",
-  };
-
-  const [nepremicnine, setNepremicnine] = useState([]);
+  const { nepremicnine, addNepremicnine } = useContext(NepremicnineContext);
   const [trenutnaStran, setTrenutnaStran] = useState(1);
   const [propertiesPerPage] = useState(12);
 
@@ -17,12 +12,12 @@ const FlatList = () => {
     api
       .get("/nepremicnine/vseNepremicnine")
       .then((response) => {
-        setNepremicnine(response.data);
+        addNepremicnine(response.data);
       })
       .catch((error) => {
         console.error("There was an error fetching the nepremicnine!", error);
       });
-  }, []);
+  }, [addNepremicnine]);
 
   const indexOfLastProperty = trenutnaStran * propertiesPerPage;
   const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
@@ -41,7 +36,6 @@ const FlatList = () => {
             <FlatItem key={nepremicnina.id} nepremicnina={nepremicnina} />
           ))}
         </ul>
-
         <ul className="pagination justify-content-center">
           {Array.from({
             length: Math.ceil(nepremicnine.length / propertiesPerPage),
