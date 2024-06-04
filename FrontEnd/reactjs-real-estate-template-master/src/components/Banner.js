@@ -34,42 +34,10 @@ const Banner = () => {
         setSearch(["a", "b", "test", "mb"]);
     }, []);
 
-    const findSearch = (e) => {
-        setWord(e.target.value);
-        const filteredCountries = search.filter(item => item.indexOf(e.target.value) > -1 ? item : null);
-        e.target.value.length === 0 ? setFind([]) : setFind(filteredCountries);
-    };
 
-    const findResult = () => {
-        if (find.length === 0 && word.length > 0) {
-            return <div className="find-search">Not Found</div>;
-        }
-        if (find.length > 0) {
-            return (
-                <div className="find-search">
-                    {find.map(item => {
-                        return <Link key={item} to="#">{item}</Link>;
-                    })}
-                </div>
-            );
-        }
-    };
-
-    const handleFilterButtonClick = () => {
-        setShowFilter(!showFilter);
-        setIcon(showFilter ? "fa-filter" : "fa-times");
-    };
-
-    const handleCloseFilter = () => {
-        setShowFilter(false);
-        setIcon("fa-filter");
-    };
-
-    const handleApplyFilters = (newFilters) => {
-        setFilters(newFilters);
-        setShowFilter(false);
-        setIcon("fa-filter");
-    };
+  const findSearch = (e) => {
+    setWord(e.target.value);
+  };
 
     return (
       <div>
@@ -97,9 +65,10 @@ const Banner = () => {
                                         className="inp-search"
                                         placeholder="Išči..."
                                     />
-                                    <button className="btn-search m-2">Išči</button>
+                                    <Link to={`/searchResult?naziv=${word}`}>
+                                        <button className="btn-search m-2">Išči</button>
+                                    </Link>
                                 </div>
-                                {findResult()}
                             </div>
                         </div>
                     </div>

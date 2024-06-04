@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import FlatItem from "./FlatItem";
 import api from "../services/api";
 import { NepremicnineContext } from "../other/NepremicnineContext";
-import FlatItem from "./FlatItem";
 
 const FlatList = ({ filters = {} }) => {
   const { nepremicnine, addNepremicnine } = useContext(NepremicnineContext);
@@ -17,6 +17,7 @@ const FlatList = ({ filters = {} }) => {
       .catch((error) => {
         console.error("There was an error fetching the nepremicnine!", error);
       });
+  }, [addNepremicnine]);
   }, [addNepremicnine]);
 
   const applyFilters = (properties) => {

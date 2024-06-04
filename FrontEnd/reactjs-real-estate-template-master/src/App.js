@@ -11,6 +11,8 @@ import BlogDetail from "./components/BlogDetail";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ComparisonProvider } from "./other/ComparisonContext";
 import ComparisonPage from "./components/ComparisonPage";
+import SearchResult from "./components/SearchResult";
+import { NepremicnineProvider } from "./other/NepremicnineContext";
 import Registracija from "./components/Registracija";
 import Prijava from "./components/Prijava";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,6 +39,7 @@ function App() {
             <Route path="/registracija" component={Registracija} />
             <Route path="/prijava" component={Prijava} />
             <Route path="/priljubljenje" component={FavoriteProperties} />
+              <Route path="/searchResult" component={SearchResult} />
           </Switch>
           <Footer />
         </div>
