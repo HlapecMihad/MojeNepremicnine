@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import si.primerjanjeCen.nepremicnine.dao.NepremicninaRepository;
 import si.primerjanjeCen.nepremicnine.vao.Nepremicnina;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -35,4 +36,9 @@ public class NepremicninaController {
         return nepremicninaDao.count();
     }
 
+    @GetMapping("vrniPriljubljeneNepremicnine")
+    public List<Nepremicnina> getPriljubljeneNepremicnine(@RequestParam String priljubljeneNepremicnine) {
+        List<String> ids = Arrays.asList(priljubljeneNepremicnine.split(","));
+        return nepremicninaDao.findByIdIn(ids);
+    }
 }
