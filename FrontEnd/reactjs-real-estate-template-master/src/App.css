@@ -143,7 +143,9 @@
 }
 
 .item-image{
-  overflow: hidden;  
+  overflow: hidden;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 .item-image img{
   min-height: 240px;
@@ -151,8 +153,8 @@
   max-height: 240px;
   object-fit:cover;
   overflow: hidden;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 .item{
   margin-bottom: 30px;
@@ -945,6 +947,14 @@ tbody tr:nth-child(even) {
   margin-right: 10px;
 }
 
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
 .btn-1 {
   padding: 10px 20px;
   border: none;
@@ -1073,25 +1083,125 @@ tbody tr:nth-child(even) {
    transform: scale(1.2);
 }
 
-.btn-filter{
+.btn-filter {
    color: black;
    padding: 12px 25px;
-   text-decoration:none;
- }
+   text-decoration: none;
+   border: none;
+   background-color: white;
+   outline: none; /* Remove focus outline */
+   width: 50px; /* Set a fixed width */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
 
- .btn-filter:hover{
+.btn-filter:hover {
    color: grey;
- }
+}
 
 
  .favorite-button {
     background: none;
     border: none;
     cursor: pointer;
-    color: #000000; 
+    color: #000000;
     font-size: 1.5rem;
   }
-  
+
   .favorite-button:hover {
-    color: #000000; 
+    color: #000000;
   }
+.btn-filter:focus {
+   outline: none; /* Ensure no outline appears on focus */
+}
+
+.filtri {
+   display: flex;
+   flex-direction: column; /* Arrange items vertically */
+   gap: 15px; /* Space between items */
+   margin-top: 20px; /* Space from top */
+   border: lightgrey 1px solid; /* Border */
+   border-radius: 10px; /* Rounded corners */
+   padding: 20px; /* Padding inside the container */
+   background-color: #f9f9f9; /* Light background color */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.filtri h1 {
+   font-size: 24px;
+   margin-bottom: 15px;
+   color: #333; /* Darker color for the title */
+}
+
+.filtri label {
+   display: flex;
+   align-items: center;
+   font-size: 16px;
+   color: #555;
+}
+
+.filtri input[type="text"],
+.filtri input[type="number"],
+.filtri select {
+   width: 100%;
+   padding: 8px;
+   margin: 5px 0;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 14px;
+}
+
+.filtri input[type="checkbox"] {
+   margin-right: 10px;
+}
+
+.filtri .checkbox-group {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+}
+
+.filtri .range-group {
+   display: flex;
+   gap: 10px;
+}
+
+.filtri .range-group input {
+   width: calc(50% - 5px); /* Adjust width to fit two inputs side by side */
+}
+
+.filtri .btn-apply {
+   padding: 10px 20px;
+   font-size: 16px;
+   color: white;
+   background-color: #364465; /* Bootstrap primary color */
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-top: 15px;
+   align-self: flex-end; /* Align the button to the right */
+}
+
+.filtri .btn-apply:hover {
+   background-color: #2d3751; /* Darker shade on hover */
+}
+
+.button-group {
+   display: flex;
+   gap: 10px; /* Adjust the gap as needed */
+   justify-content: flex-end;
+}
+
+
+.pagination .page-item.active .page-link {
+   color: white;
+   background-color: #364465;
+   outline: none;
+}
+
+.page-link {
+   color: black;
+}
+
+

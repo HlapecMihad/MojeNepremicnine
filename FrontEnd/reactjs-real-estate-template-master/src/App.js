@@ -17,9 +17,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FavoriteProperties from './components/FavoriteProperties';
 
 
+import { NepremicnineProvider } from "./other/NepremicnineContext";
 
 function App() {
   return (
+   <NepremicnineProvider>
     <ComparisonProvider>
       <Router>
         <div className="App">
@@ -40,6 +42,7 @@ function App() {
         </div>
       </Router>
     </ComparisonProvider>
+    </NepremicnineProvider>
   );
 }
 
