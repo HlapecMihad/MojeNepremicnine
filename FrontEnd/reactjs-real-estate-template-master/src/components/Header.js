@@ -1,11 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ComparisonContext } from "../other/ComparisonContext";
 import UporabnikDropdown from './UporabnikDropdown';
+import { Collapse } from 'bootstrap';
 
 const Header = () => {
   const { comparisonList } = useContext(ComparisonContext);
   const [user, setUser] = useState(null);
+  const navbarCollapseRef = useRef(null);
 
   useEffect(() => {
     const loggedInUser = sessionStorage.getItem("user");
@@ -18,6 +20,15 @@ const Header = () => {
     localStorage.removeItem("user");
     sessionStorage.removeItem("user");
     setUser(null);
+  };
+
+  const handleNavLinkClick = () => {
+    if (navbarCollapseRef.current) {
+      const bsCollapse = Collapse.getInstance(navbarCollapseRef.current);
+      if (bsCollapse) {
+        bsCollapse.hide();
+      }
+    }
   };
 
   return (
@@ -42,10 +53,10 @@ const Header = () => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
+            <div className="collapse navbar-collapse" id="navbarNav" ref={navbarCollapseRef}>
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/primerjanje">
+                  <Link className="nav-link" to="/primerjanje" onClick={handleNavLinkClick}>
                     Primerjanje
                     {comparisonList.length > 0 && (
                       <span
@@ -64,7 +75,7 @@ const Header = () => {
                 ) : (
                   <>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/prijava">
+                      <Link className="nav-link" to="/prijava" onClick={handleNavLinkClick}>
                         Prijava
                       </Link>
                     </li>

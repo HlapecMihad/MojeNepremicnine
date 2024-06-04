@@ -101,7 +101,7 @@ const Banner = () => {
           onApply={handleApplyFilters}
         />
       )}
-      <FlatList filters={filters} />
+      <FlatList filters={filters} setFilters={setFilters} />
     </div>
   );
 };

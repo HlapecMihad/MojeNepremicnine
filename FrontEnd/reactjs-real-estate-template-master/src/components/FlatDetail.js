@@ -77,6 +77,9 @@ const FlatDetail = () => {
             <div className="fd-top flat-detail-content">
               <div>
                 <h3 className="flat-detail-title">{naziv}</h3>
+                <div>
+                  <span className="fd-price">{formattedCena} €</span>
+                </div>
                 <p className="fd-address">
                   <i className="fas fa-map-marker-alt"></i> {lokacija}
                 </p>
@@ -91,9 +94,6 @@ const FlatDetail = () => {
                   ></i>
                   {tip_nepremicnine}
                 </span>
-              </div>
-              <div>
-                <span className="fd-price">{formattedCena} €</span>
               </div>
             </div>
             <ImageGallery

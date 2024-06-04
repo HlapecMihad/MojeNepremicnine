@@ -11,7 +11,7 @@ const ComparisonPage = () => {
     return (
       <div className="comparison-page">
         <h1 className="middle">Primerjava nepremičnin</h1>
-        <p className="middle">Nobena nepremičnina ni bila izbrana.</p>
+        <p className="middle1">Nobena nepremičnina ni bila izbrana.</p>
       </div>
     );
   }

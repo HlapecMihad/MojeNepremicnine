@@ -14,7 +14,7 @@ const UporabnikDropdown = ({ user, handleLogout }) => {
 
       <Dropdown.Menu>
         <Dropdown.Item onClick={() => history.push('/nastavitve')}>Nastavitve</Dropdown.Item>
-        <Dropdown.Item ><Link to="/priljubljenje">Favorites</Link>
+        <Dropdown.Item ><Link className="favoritesLink" to="/priljubljenje">Favorites</Link>
 </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item onClick={handleLogout}>Odjava</Dropdown.Item>

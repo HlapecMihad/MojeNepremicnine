@@ -41,9 +41,18 @@ const FavoriteProperties = () => {
     fetchProperties().then(fetchFavoriteProperties);
   }, [allProperties]);
 
+  if (favoriteProperties.length === 0) {
+   return (
+     <div className="comparison-page">
+       <h1 className="middle">Priljubljene nepremičnine</h1>
+       <p className="middle1">Nobena nepremičnina ni bila izbrana.</p>
+     </div>
+   );
+ }
+
   return (
     <div className="favorite-properties">
-      <h1>Priljubljene nepremičnine</h1>
+      <h1 className='middle'>Priljubljene nepremičnine</h1>
       <div className="row">
         {favoriteProperties.map(property => (
           <FlatItem key={property.id} nepremicnina={property} />

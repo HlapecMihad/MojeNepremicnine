@@ -3,7 +3,7 @@ import FlatItem from "./FlatItem";
 import api from "../services/api";
 import { NepremicnineContext } from "../other/NepremicnineContext";
 
-const FlatList = ({ filters = {} }) => {
+const FlatList = ({ filters = {}, setFilters }) => {
   const { nepremicnine, addNepremicnine } = useContext(NepremicnineContext);
   const [trenutnaStran, setTrenutnaStran] = useState(1);
   const [propertiesPerPage] = useState(12);
@@ -108,8 +108,64 @@ const FlatList = ({ filters = {} }) => {
 
   const paginate = (pageNumber) => setTrenutnaStran(pageNumber);
 
+  const activeFilters = Object.entries(filters).filter(
+    ([, value]) => value !== null && value !== ""
+  );
+
+  const translateFilterKey = (key) => {
+    const translations = {
+      st_sob: "število sob",
+      st_spalnic: "število spalnic",
+      st_kopalnic: "število kopalnic",
+      velikost_skupaj: "velikost skupaj",
+      velikost_zemljisca: "velikost zemljišča",
+      leto_izgradnje: "leto izgradnje",
+      st_nadstropij: "število nadstropij",
+      tip_nepremicnine: "tip nepremičnine",
+      posredovanje: "posredovanje",
+      cenaMin: "cena min",
+      cenaMax: "cena max",
+      lokacija: "lokacija",
+      agencija: "agencija"
+    };
+
+    // Replace underscores with spaces and handle any specific replacements
+    let translated = key.replace(/_/g, " ");
+
+    // Use the translations dictionary for specific translations
+    if (translations[key]) {
+      translated = translations[key];
+    }
+
+    return translated;
+  };
+
+  const removeFilter = (key) => {
+    const updatedFilters = { ...filters, [key]: null };
+    setFilters(updatedFilters);
+  };
+
   return (
     <section className="section-all-re">
+      <div className="container mb-4">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="filter-container">
+              {activeFilters.map(([key, value]) => (
+                <span key={key} className="filtri-badge">
+                  {`${translateFilterKey(key)}: ${value}`}{" "}
+                  <i
+                    className="fa fa2 fa-times"
+                    aria-hidden="true"
+                    onClick={() => removeFilter(key)}
+                    style={{ cursor: "pointer", marginLeft: "5px" }}
+                  ></i>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="container">
         <ul className="row">
           {currentProperties.map((nepremicnina) => (
