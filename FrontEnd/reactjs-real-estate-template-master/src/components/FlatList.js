@@ -31,11 +31,11 @@ const FlatList = ({ filters = {} }) => {
       if (filters.lokacija && lokacijaDel !== filters.lokacija) return false;
       if (filters.cenaMin !== null && cena < filters.cenaMin) return false;
       if (filters.cenaMax !== null && cena > filters.cenaMax) return false;
-      if (filters.st_sob !== null && property.st_sob !== String(filters.st_sob)) return false;
-      if (filters.st_spalnic !== null && property.st_spalnic !== String(filters.st_spalnic)) return false;
-      if (filters.st_kopalnic !== null && property.st_kopalnic !== String(filters.st_kopalnic)) return false;
-      if (filters.leto_izgradnje !== null && property.leto_izgradnje !== String(filters.leto_izgradnje)) return false;
-      if (filters.st_nadstropij !== null && property.st_nadstropij !== String(filters.st_nadstropij)) return false;
+      if (filters.st_sob !== null && property.st_sob !== filters.st_sob) return false;
+      if (filters.st_spalnic !== null && property.st_spalnic !== filters.st_spalnic) return false;
+      if (filters.st_kopalnic !== null && property.st_kopalnic !== filters.st_kopalnic) return false;
+      if (filters.leto_izgradnje !== null && property.leto_izgradnje !== filters.leto_izgradnje) return false;
+      if (filters.st_nadstropij !== null && property.st_nadstropij !== filters.st_nadstropij) return false;
       if (filters.velikost_zemljiscaMin !== null && velikostZemljisca < filters.velikost_zemljiscaMin) return false;
       if (filters.velikost_zemljiscaMax !== null && velikostZemljisca > filters.velikost_zemljiscaMax) return false;
       if (filters.velikost_skupajMin !== null && velikostSkupaj < filters.velikost_skupajMin) return false;
