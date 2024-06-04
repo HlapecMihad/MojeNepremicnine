@@ -1,6 +1,7 @@
 package si.primerjanjeCen.nepremicnine.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import si.primerjanjeCen.nepremicnine.dao.NepremicninaRepository;
 import si.primerjanjeCen.nepremicnine.vao.Nepremicnina;
@@ -19,4 +20,19 @@ public class NepremicninaController {
     public List<Nepremicnina> getAllNepremicnine() {
         return nepremicninaDao.findAll();
     }
+
+    @GetMapping("prvihDvanajst")
+    public List<Nepremicnina> getPrvihDvanajst() {
+        return nepremicninaDao.findAll(PageRequest.of(0, 12)).getContent();
+    }
+    @GetMapping("vrniGledeNaStran")
+    public List<Nepremicnina> getBasedOnPage(@RequestParam(defaultValue = "0") int page) {
+        return nepremicninaDao.findAll(PageRequest.of(page, 21)).getContent();
+    }
+
+    @GetMapping("steviloVseh")
+    public long getSteviloVseh(){
+        return nepremicninaDao.count();
+    }
+
 }

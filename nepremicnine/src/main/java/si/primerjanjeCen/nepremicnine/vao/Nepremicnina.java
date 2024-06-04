@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@Document(collection = "nepremicnine")
+@Document(collection = "nepremicnine_vse")
 public class Nepremicnina {
 
     @Id

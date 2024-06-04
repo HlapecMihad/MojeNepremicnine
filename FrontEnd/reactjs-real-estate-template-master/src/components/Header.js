@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ComparisonContext } from "../other/ComparisonContext";
-import UporabnikDropdown from './UporabnikDropdown';
-import { Collapse } from 'bootstrap';
+import UporabnikDropdown from "./UporabnikDropdown";
+import { Collapse } from "bootstrap";
 
 const Header = () => {
   const { comparisonList } = useContext(ComparisonContext);
@@ -53,10 +53,27 @@ const Header = () => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav" ref={navbarCollapseRef}>
+            <div
+              className="collapse navbar-collapse"
+              id="navbarNav"
+              ref={navbarCollapseRef}
+            >
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/primerjanje" onClick={handleNavLinkClick}>
+                  <Link
+                    className="nav-link"
+                    to="/nepremicnine"
+                    onClick={handleNavLinkClick}
+                  >
+                    Vse nepremičnine
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    to="/primerjanje"
+                    onClick={handleNavLinkClick}
+                  >
                     Primerjanje
                     {comparisonList.length > 0 && (
                       <span
@@ -70,12 +87,19 @@ const Header = () => {
                 </li>
                 {user ? (
                   <li className="nav-item">
-                    <UporabnikDropdown user={user} handleLogout={handleLogout} />
+                    <UporabnikDropdown
+                      user={user}
+                      handleLogout={handleLogout}
+                    />
                   </li>
                 ) : (
                   <>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/prijava" onClick={handleNavLinkClick}>
+                      <Link
+                        className="nav-link"
+                        to="/prijava"
+                        onClick={handleNavLinkClick}
+                      >
                         Prijava
                       </Link>
                     </li>

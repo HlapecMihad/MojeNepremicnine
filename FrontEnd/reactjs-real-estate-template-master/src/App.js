@@ -3,7 +3,7 @@ import FlatDetail from "./components/FlatDetail";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import Contact from "./components/Contact";
+import NepremicninePage from "./components/NepremicninePage";
 import Filter from "./components/Filter";
 import Blog from "./components/Blog";
 import About from "./components/About";
@@ -37,6 +37,7 @@ function App() {
               <Route path="/prijava" component={Prijava} />
               <Route path="/priljubljenje" component={FavoriteProperties} />
               <Route path="/searchResult" component={SearchResult} />
+              <Route path="/nepremicnine" component={NepremicninePage} />
             </Switch>
             <Footer />
           </div>
