@@ -40,9 +40,11 @@ const Prijava = () => {
                 window.location.href = '/';
             } else {
                 console.log('Login failed');
+                alert("Prijava neuspešna!")
             }
         } catch (error) {
             console.log('Login failed', error);
+            alert("Napaka pri prijavi.")
         }
     };
 

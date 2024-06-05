@@ -45,6 +45,7 @@ const Registracija = () => {
       console.log(data);
     } catch (error) {
       console.error("There was an error registering the user!", error);
+      alert("Napaka pri registraciji.")
     }
   };
 

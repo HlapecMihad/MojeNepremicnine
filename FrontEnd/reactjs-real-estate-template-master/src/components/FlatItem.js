@@ -74,7 +74,7 @@ const FlatItem = ({ nepremicnina }) => {
         console.error("Error updating favorites", error);
       }
     } else {
-      alert("Please log in to favorite properties.");
+      alert("Za dodajanje med priljubljene se je potrebno prijaviti.");
     }
   };
 
