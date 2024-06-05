@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import banner from "../banner.jpg";
 import { Link } from "react-router-dom";
 import Filter from "./Filter";
+import TuneIcon from "@mui/icons-material/Tune";
 import FlatList from "./FlatList";
-import TuneIcon from '@mui/icons-material/Tune';
-
 
 const Banner = () => {
   const [search, setSearch] = useState([]);
@@ -31,6 +30,7 @@ const Banner = () => {
     velikost_skupajMin: null,
     velikost_skupajMax: null,
     agencija: "",
+    naziv: "", // Add the search term to the filters state
   });
 
   const findSearch = (e) => {
@@ -64,6 +64,14 @@ const Banner = () => {
       .join("&");
     return query;
   };
+
+  useEffect(() => {
+    // Update the naziv filter when the search word changes
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      naziv: word,
+    }));
+  }, [word]);
 
   return (
     <div>
@@ -100,12 +108,12 @@ const Banner = () => {
                   </div>
                   <div className="search-area d-flex align-items-center">
                     <button
-                        className="btn-filter m-2"
-                        title="Filtriraj"
-                        onClick={handleFilterButtonClick}
-                        style={{ outline: "none" }}
+                      className="btn-filter m-2"
+                      title="Filtriraj"
+                      onClick={handleFilterButtonClick}
+                      style={{ outline: "none" }}
                     >
-                        <TuneIcon />
+                      <TuneIcon />
                     </button>
                     <input
                       value={word}

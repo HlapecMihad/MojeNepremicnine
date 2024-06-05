@@ -95,6 +95,7 @@ public class NepremicninaController {
             @RequestParam(required = false) Integer velikost_skupajMin,
             @RequestParam(required = false) Integer velikost_skupajMax,
             @RequestParam(required = false) String agencija,
+            @RequestParam(required = false) String naziv,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "21") int size) {
 
@@ -162,6 +163,9 @@ public class NepremicninaController {
 
         if (agencija != null && !agencija.isEmpty()) {
             query.addCriteria(Criteria.where("agencija").is(agencija));
+        }
+        if (naziv != null && !naziv.isEmpty()) {
+            query.addCriteria(Criteria.where("naziv").regex(".*" + naziv + ".*", "i"));
         }
 
         query.with(PageRequest.of(page, size));

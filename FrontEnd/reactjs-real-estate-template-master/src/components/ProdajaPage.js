@@ -3,8 +3,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import FlatItem from "./FlatItem";
 import api from "../services/api";
 import Filter from "./Filter";
-import TuneIcon from '@mui/icons-material/Tune';
-
+import TuneIcon from "@mui/icons-material/Tune";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -37,6 +36,7 @@ const ProdajaPage = () => {
     velikost_skupajMin: query.get("velikost_skupajMin") || "",
     velikost_skupajMax: query.get("velikost_skupajMax") || "",
     agencija: query.get("agencija") || "",
+    naziv: query.get("naziv") || "",
   };
 
   const cleanFilters = Object.fromEntries(
@@ -63,7 +63,7 @@ const ProdajaPage = () => {
       }
     };
     fetchData();
-  }, [page, JSON.stringify(cleanFilters)]); // Convert filters to a string to avoid re-renders
+  }, [page, JSON.stringify(cleanFilters)]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -197,7 +197,7 @@ const ProdajaPage = () => {
   };
 
   const activeFilters = Object.entries(cleanFilters).filter(
-    ([key, value]) => value !== ""
+    ([key, value]) => value !== "" && key !== "posredovanje"
   );
 
   return (
@@ -207,14 +207,15 @@ const ProdajaPage = () => {
           <div>Loading...</div>
         ) : (
           <>
-                               <button
-                        className="btn-filter m-2"
-                        title="Filtriraj"
-                        onClick={handleFilterButtonClick}
-                        style={{ outline: "none" }}
-                    >
-                        <TuneIcon />
-                    </button>
+            <h3 className="middle">PRODAJA</h3>
+            <button
+              className="btn-filter m-2"
+              title="Filtriraj"
+              onClick={handleFilterButtonClick}
+              style={{ outline: "none" }}
+            >
+              <TuneIcon />
+            </button>
             {showFilter && (
               <Filter
                 filters={filters}

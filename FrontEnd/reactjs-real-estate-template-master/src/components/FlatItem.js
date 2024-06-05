@@ -13,7 +13,7 @@ const FlatItem = ({ nepremicnina }) => {
     useContext(ComparisonContext);
 
   const formattedCena =
-    posredovanje === "Oddaja" ? `${cena}€/mesec` : `${cena} €`;
+    posredovanje === "Oddaja" ? `${cena} €/mesec` : `${cena} €`;
 
   const isInComparison = comparisonList.some((item) => item.id === id);
 
