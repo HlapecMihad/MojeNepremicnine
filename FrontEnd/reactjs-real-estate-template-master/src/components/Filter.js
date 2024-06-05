@@ -11,7 +11,7 @@ const Filter = ({ filters, onClose, onApply }) => {
     const { value } = event.target;
     setLocalFilters((prevFilters) => ({
       ...prevFilters,
-      [field]: isNumber ? (value !== "" ? Number(value) : null) : value,
+      [field]: isNumber ? (value !== "" ? Number(value) : "") : value,
     }));
   };
 
