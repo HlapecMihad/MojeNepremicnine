@@ -10,6 +10,7 @@ const Banner = () => {
   const [word, setWord] = useState("");
   const [showFilter, setShowFilter] = useState(false); // State for managing the Filter visibility
   const [icon, setIcon] = useState("fa-filter"); // State for managing the icon
+  const [selectedButton, setSelectedButton] = useState("prodaja"); // State for managing the selected button
 
   // Filter state
   const [filters, setFilters] = useState({
@@ -30,13 +31,10 @@ const Banner = () => {
     agencija: "",
   });
 
-  useEffect(() => {
-    setSearch(["a", "b", "test", "mb"]);
-  }, []);
-
   const findSearch = (e) => {
     setWord(e.target.value);
   };
+
   const handleFilterButtonClick = () => {
     setShowFilter(!showFilter);
     setIcon(showFilter ? "fa-filter" : "fa-times");
@@ -53,6 +51,18 @@ const Banner = () => {
     setIcon("fa-filter");
   };
 
+  const handleButtonClick = (button) => {
+    setSelectedButton(button);
+  };
+
+  const createFilterQueryString = () => {
+    const query = Object.entries(filters)
+      .filter(([key, value]) => value !== "" && value !== null)
+      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+      .join("&");
+    return query;
+  };
+
   return (
     <div>
       <div
@@ -64,11 +74,29 @@ const Banner = () => {
             <div className="row">
               <div className="col-lg-6 mx-auto">
                 <div className="banner-area text-center pt-4 pb-4">
-                  <p>Text</p>
-                  <h2 className="mt-2 mb-4 banner-title">
-                    <strong>NASLOV</strong>
-                  </h2>
-                  <div className="search-area">
+                  <div className="button-group mb-3 d-flex justify-content-start">
+                    <button
+                      className={`btn mx-2 ${
+                        selectedButton === "prodaja"
+                          ? "btn-primary"
+                          : "btn-secondary"
+                      }`}
+                      onClick={() => handleButtonClick("prodaja")}
+                    >
+                      Prodaja
+                    </button>
+                    <button
+                      className={`btn mx-2 ${
+                        selectedButton === "oddaja"
+                          ? "btn-primary"
+                          : "btn-secondary"
+                      }`}
+                      onClick={() => handleButtonClick("oddaja")}
+                    >
+                      Oddaja
+                    </button>
+                  </div>
+                  <div className="search-area d-flex align-items-center">
                     <button
                       className="btn-filter m-2"
                       title="Filtriraj"
@@ -84,7 +112,9 @@ const Banner = () => {
                       className="inp-search"
                       placeholder="Išči..."
                     />
-                    <Link to={`/searchResult?naziv=${word}`}>
+                    <Link
+                      to={`/nepremicnine/${selectedButton}?${createFilterQueryString()}`}
+                    >
                       <button className="btn-search m-2">Išči</button>
                     </Link>
                   </div>

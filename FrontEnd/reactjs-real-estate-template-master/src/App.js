@@ -3,7 +3,7 @@ import FlatDetail from "./components/FlatDetail";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import NepremicninePage from "./components/NepremicninePage";
+import ProdajaPage from "./components/ProdajaPage";
 import Filter from "./components/Filter";
 import Blog from "./components/Blog";
 import About from "./components/About";
@@ -17,6 +17,7 @@ import Registracija from "./components/Registracija";
 import Prijava from "./components/Prijava";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FavoriteProperties from "./components/FavoriteProperties";
+import OddajaPage from "./components/OddajaPage";
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
               <Route path="/prijava" component={Prijava} />
               <Route path="/priljubljenje" component={FavoriteProperties} />
               <Route path="/searchResult" component={SearchResult} />
-              <Route path="/nepremicnine" component={NepremicninePage} />
+              <Route path="/nepremicnine/prodaja" component={ProdajaPage} />
+              <Route path="/nepremicnine/oddaja" component={OddajaPage} />
             </Switch>
             <Footer />
           </div>

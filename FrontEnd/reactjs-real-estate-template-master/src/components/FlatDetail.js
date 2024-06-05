@@ -44,8 +44,8 @@ const FlatDetail = () => {
   } = nepremicnina;
 
   let formattedCena;
-  if (cena !== 0) {
-    formattedCena = posredovanje === "Oddaja" ? `${cena}/mesec` : cena;
+  if (cena !== null) {
+    formattedCena = posredovanje === "Oddaja" ? `${cena} €/mesec` : `${cena} €`;
   } else {
     formattedCena = "Po dogovoru";
   }
@@ -78,7 +78,7 @@ const FlatDetail = () => {
               <div>
                 <h3 className="flat-detail-title">{naziv}</h3>
                 <div>
-                  <span className="fd-price">{formattedCena} €</span>
+                  <span className="fd-price">{formattedCena}</span>
                 </div>
                 <p className="fd-address">
                   <i className="fas fa-map-marker-alt"></i> {lokacija}
@@ -112,7 +112,7 @@ const FlatDetail = () => {
                 <div className="fd-item fd-property-detail">
                   <h4>Pregled</h4>
                   <div className="row">
-                    {st_sob !== 0 && (
+                    {st_sob !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaHome className="icon" />
                         <div className="ms-2">
@@ -123,7 +123,7 @@ const FlatDetail = () => {
                         </div>
                       </div>
                     )}
-                    {st_spalnic !== 0 && (
+                    {st_spalnic !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaBed className="icon" />
                         <div className="ms-2">
@@ -134,7 +134,7 @@ const FlatDetail = () => {
                         </div>
                       </div>
                     )}
-                    {st_kopalnic !== 0 && (
+                    {st_kopalnic !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaBath className="icon" />
                         <div className="ms-2">
@@ -145,7 +145,7 @@ const FlatDetail = () => {
                         </div>
                       </div>
                     )}
-                    {leto_izgradnje !== 0 && (
+                    {leto_izgradnje !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaCalendarAlt className="icon" />
                         <div className="ms-2">
@@ -156,7 +156,7 @@ const FlatDetail = () => {
                         </div>
                       </div>
                     )}
-                    {st_nadstropij !== 0 && (
+                    {st_nadstropij !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaBuilding className="icon" />
                         <div className="ms-2">
@@ -167,29 +167,29 @@ const FlatDetail = () => {
                         </div>
                       </div>
                     )}
-                    {velikost_zemljisca !== "N/A" && (
+                    {velikost_zemljisca !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaRulerCombined className="icon" />
                         <div className="ms-2">
                           <div>
                             <b>Velikost zemljišča: </b>
                           </div>
-                          <div>{velikost_zemljisca.split(" ")[0]} m²</div>
+                          <div>{velikost_zemljisca} m²</div>
                         </div>
                       </div>
                     )}
-                    {velikost_skupaj !== "N/A" && (
+                    {velikost_skupaj !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaRulerCombined className="icon" />
                         <div className="ms-2">
                           <div>
                             <b>Velikost skupaj: </b>
                           </div>
-                          <div>{velikost_skupaj.split(" ")[0]} m²</div>
+                          <div>{velikost_skupaj} m²</div>
                         </div>
                       </div>
                     )}
-                    {leto_obnove !== 0 && (
+                    {leto_obnove !== null && (
                       <div className="col-lg-6 col-md-6 d-flex align-items-center mb-3">
                         <FaCalendarAlt className="icon" />
                         <div className="ms-2">

@@ -33,7 +33,7 @@ const ComparisonPage = () => {
     }));
   };
 
-  const renderValue = (value) => (value === 0 ? "Ni na voljo" : value);
+  const renderValue = (value) => (value === null ? "Ni na voljo" : value);
 
   const attributeNames = {
     posredovanje: "Posredovanje",

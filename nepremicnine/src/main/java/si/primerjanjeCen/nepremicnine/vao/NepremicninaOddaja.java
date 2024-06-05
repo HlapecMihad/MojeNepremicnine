@@ -11,8 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@Document(collection = "nepremicnine_prodaja")
-public class Nepremicnina {
+@Document(collection = "nepremicnine_oddaja")
+public class NepremicninaOddaja {
 
     @Id
     private String id;
@@ -35,6 +35,4 @@ public class Nepremicnina {
     private String leto_obnove; // Change to String because in the example it's "N/A"
     private String agencija;
     private List<String> lastnosti;
-
-
 }

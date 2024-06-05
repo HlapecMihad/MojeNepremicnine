@@ -1,20 +1,21 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ComparisonContext } from "../other/ComparisonContext";
-import axios from 'axios';
+import axios from "axios";
 import noImage from "../noImage.jpg";
-import api from '../services/api'
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import api from "../services/api";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const FlatItem = ({ nepremicnina }) => {
   const { id, naziv, cena, image_urls, posredovanje, agencija } = nepremicnina;
-  const { comparisonList, addToComparison, removeFromComparison } = useContext(ComparisonContext);
+  const { comparisonList, addToComparison, removeFromComparison } =
+    useContext(ComparisonContext);
 
-  const formattedCena = posredovanje === "Oddaja" ? `${cena}€/mesec` : `${cena}€`;
+  const formattedCena =
+    posredovanje === "Oddaja" ? `${cena}€/mesec` : `${cena} €`;
 
   const isInComparison = comparisonList.some((item) => item.id === id);
-
 
   const handleAddToComparison = () => {
     if (comparisonList.length >= 3) {
@@ -30,22 +31,23 @@ const FlatItem = ({ nepremicnina }) => {
 
   const imageUrl = image_urls.length > 0 ? image_urls[0] : noImage;
 
-
   const [isFavorited, setIsFavorited] = useState(false);
-  
+
   useEffect(() => {
     const fetchFavorites = async () => {
-      const user = sessionStorage.getItem('user');
+      const user = sessionStorage.getItem("user");
       if (user) {
         const userData = JSON.parse(user);
         const userEmail = userData ? userData.email : null;
 
         if (userEmail) {
           try {
-            const response = await api.get(`/uporabniki/${userEmail}/favorites`);
+            const response = await api.get(
+              `/uporabniki/${userEmail}/favorites`
+            );
             setIsFavorited(response.data.includes(id));
           } catch (error) {
-            console.error('Error fetching user favorites', error);
+            console.error("Error fetching user favorites", error);
           }
         }
       }
@@ -54,28 +56,27 @@ const FlatItem = ({ nepremicnina }) => {
     fetchFavorites();
   }, [id]);
 
-
   const handleFavoriteClick = async () => {
-    const user = JSON.parse(sessionStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem("user"));
     const userEmail = user ? user.email : null;
 
     if (user) {
       try {
-        const url = isFavorited ? '/uporabniki/removeFavorite' : '/uporabniki/addFavorite';
+        const url = isFavorited
+          ? "/uporabniki/removeFavorite"
+          : "/uporabniki/addFavorite";
         await api.post(url, {
           userEmail: userEmail,
-          propertyId: id
+          propertyId: id,
         });
         setIsFavorited(!isFavorited);
       } catch (error) {
-        console.error('Error updating favorites', error);
+        console.error("Error updating favorites", error);
       }
     } else {
-      alert('Please log in to favorite properties.');
+      alert("Please log in to favorite properties.");
     }
   };
-
-
 
   return (
     <div className="text-center col-lg-4 col-12 col-md-6">

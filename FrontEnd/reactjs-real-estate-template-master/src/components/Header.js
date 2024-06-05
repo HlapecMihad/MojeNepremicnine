@@ -62,15 +62,6 @@ const Header = () => {
                 <li className="nav-item">
                   <Link
                     className="nav-link"
-                    to="/nepremicnine"
-                    onClick={handleNavLinkClick}
-                  >
-                    Vse nepremičnine
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
                     to="/primerjanje"
                     onClick={handleNavLinkClick}
                   >

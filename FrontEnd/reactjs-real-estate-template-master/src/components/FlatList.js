@@ -20,6 +20,7 @@ const FlatList = () => {
 
   return (
     <section className="section-all-re">
+      <h2 className="middle">Zadnje dodani oglasi</h2>
       <div className="container">
         <ul className="row">
           {nepremicnine.map((nepremicnina) => (
@@ -29,11 +30,6 @@ const FlatList = () => {
             />
           ))}
         </ul>
-      </div>
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <Link to="/nepremicnine">
-          <button className="btn-1 btn-detail">Več</button>
-        </Link>
       </div>
     </section>
   );
