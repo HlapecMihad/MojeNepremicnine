@@ -3,6 +3,8 @@ import banner from "../banner.jpg";
 import { Link } from "react-router-dom";
 import Filter from "./Filter";
 import FlatList from "./FlatList";
+import TuneIcon from '@mui/icons-material/Tune';
+
 
 const Banner = () => {
   const [search, setSearch] = useState([]);
@@ -98,12 +100,12 @@ const Banner = () => {
                   </div>
                   <div className="search-area d-flex align-items-center">
                     <button
-                      className="btn-filter m-2"
-                      title="Filtriraj"
-                      onClick={handleFilterButtonClick}
-                      style={{ outline: "none" }}
+                        className="btn-filter m-2"
+                        title="Filtriraj"
+                        onClick={handleFilterButtonClick}
+                        style={{ outline: "none" }}
                     >
-                      <i className={`fa ${icon}`} aria-hidden="true"></i>
+                        <TuneIcon />
                     </button>
                     <input
                       value={word}

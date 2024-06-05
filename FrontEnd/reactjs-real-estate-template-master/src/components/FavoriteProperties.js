@@ -22,7 +22,9 @@ const FavoriteProperties = () => {
                         const favoritePropertiesResponse = await api.get('/nepremicnine/vrniPriljubljeneNepremicnine', {
                             params: { priljubljeneNepremicnine: favoriteIdsString }
                         });
-                        setFavoriteProperties(favoritePropertiesResponse.data);
+                        const data = favoritePropertiesResponse.data;
+                        const combinedProperties = [...data.nepremicnine, ...data.nepremicnineOddaja];
+                        setFavoriteProperties(combinedProperties);
                     } else {
                         setFavoriteProperties([]);
                     }

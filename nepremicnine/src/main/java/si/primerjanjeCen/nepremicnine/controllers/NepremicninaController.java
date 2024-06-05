@@ -14,6 +14,7 @@ import si.primerjanjeCen.nepremicnine.vao.Nepremicnina;
 import si.primerjanjeCen.nepremicnine.vao.NepremicninaOddaja;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,11 +62,21 @@ public class NepremicninaController {
         return nepremicninaDaoOddaja.count();
     }
 
-    @GetMapping("vrniPriljubljeneNepremicnine")
-    public List<Nepremicnina> getPriljubljeneNepremicnine(@RequestParam String priljubljeneNepremicnine) {
+    @GetMapping("/vrniPriljubljeneNepremicnine")
+    public PriljubljeneNepremicnineResponse getPriljubljeneNepremicnine(@RequestParam String priljubljeneNepremicnine) {
         List<String> ids = Arrays.asList(priljubljeneNepremicnine.split(","));
-        return nepremicninaDao.findByIdIn(ids);
+
+        List<Nepremicnina> nepremicnine = nepremicninaDao.findByIdIn(ids);
+        List<NepremicninaOddaja> nepremicnineOddaja = nepremicninaDaoOddaja.findByIdIn(ids);
+
+        PriljubljeneNepremicnineResponse response = new PriljubljeneNepremicnineResponse();
+        response.setNepremicnine(nepremicnine);
+        response.setNepremicnineOddaja(nepremicnineOddaja);
+
+        return response;
     }
+
+
 
     @GetMapping("filtri")
     public Page<?> getFilteredNepremicnine(

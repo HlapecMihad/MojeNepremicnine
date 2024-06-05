@@ -3,6 +3,8 @@ import { useLocation, useHistory } from "react-router-dom";
 import FlatItem from "./FlatItem";
 import api from "../services/api";
 import Filter from "./Filter";
+import TuneIcon from '@mui/icons-material/Tune';
+
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -205,14 +207,14 @@ const ProdajaPage = () => {
           <div>Loading...</div>
         ) : (
           <>
-            <button
-              className="btn-filter m-2"
-              title="Filtriraj"
-              onClick={handleFilterButtonClick}
-              style={{ outline: "none" }}
-            >
-              <i className={`fa ${icon}`} aria-hidden="true"></i>
-            </button>
+                               <button
+                        className="btn-filter m-2"
+                        title="Filtriraj"
+                        onClick={handleFilterButtonClick}
+                        style={{ outline: "none" }}
+                    >
+                        <TuneIcon />
+                    </button>
             {showFilter && (
               <Filter
                 filters={filters}
