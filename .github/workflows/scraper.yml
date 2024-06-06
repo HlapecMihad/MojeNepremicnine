@@ -32,11 +32,18 @@ jobs:
 
       - name: Get public IP address
         id: get_ip
-        run: echo "IP=$(curl -s https://api.ipify.org)" >> $GITHUB_ENV
+        run: |
+          IP=$(curl -s https://api.ipify.org)
+          echo "Public IP: $IP"
+          echo "IP=$IP" >> $GITHUB_ENV
+
+      - name: Debug IP Address
+        run: echo "IP Address is ${{ env.IP }}"
 
       - name: Add IP to MongoDB Atlas whitelist
         run: |
           IP=$(echo ${{ env.IP }})
+          echo "Adding IP to MongoDB Atlas whitelist: $IP"
           curl -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X POST \
           "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList" \
           -H "Content-Type: application/json" \
@@ -55,5 +62,6 @@ jobs:
         if: always()
         run: |
           IP=$(echo ${{ env.IP }})
+          echo "Removing IP from MongoDB Atlas whitelist: $IP"
           curl -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X DELETE \
           "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList/${IP}"
