@@ -13,7 +13,7 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 json_dir = os.path.join(base_dir, '..', 'JSON')
 
 
-driver = webdriver.Edge()
+driver = webdriver.Edge(EdgeChromiumDriverManager().install())
 
 
 base_url = 'https://www.re-max.si/PublicListingList.aspx'
