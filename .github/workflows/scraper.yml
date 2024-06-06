@@ -3,7 +3,7 @@ name: Weekly Scraper
 on:
   schedule:
     - cron: '30 14 * * 4'  # Runs every Sunday at midnight
-
+  workflow_dispatch:
 jobs:
   scrape:
     runs-on: ubuntu-latest
