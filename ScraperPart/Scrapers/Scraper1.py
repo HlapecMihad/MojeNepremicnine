@@ -21,7 +21,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
-service = Service(EdgeChromiumDriverManager().install())
+service = Service('/usr/local/bin/edgedriver')
 
 driver = webdriver.Edge(service=service, options=options)
 
@@ -34,7 +34,6 @@ try:
     ).click()
 except Exception as e:
     print("No 'Allow Cookies' button found or error clicking it:", e)
-
 
 
 def transform_tip_nepremicnine(tip_nepremicnine: str) -> str:
