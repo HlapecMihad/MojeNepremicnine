@@ -19,6 +19,7 @@ options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--remote-debugging-port=9222')
 options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
 service = Service('/usr/local/bin/edgedriver')
@@ -58,8 +59,8 @@ def scrape_page() -> list:
     for container in containers:
         posredovanje_element = container.find('div', class_='card-trans-type collection-card drop-shadow')
         posredovanje = posredovanje_element.text.strip() if posredovanje_element else 'N/A'
-        if(posredovanje == 'Prodamo'): posredovanje = 'Prodaja'
-        elif(posredovanje == 'Oddamo'): posredovanje = 'Oddaja'
+        if posredovanje == 'Prodamo': posredovanje = 'Prodaja'
+        elif posredovanje == 'Oddamo': posredovanje = 'Oddaja'
         
         tip_nepremicnine_element = container.find('div', class_='gallery-transtype').find('span')
         tip_nepremicnine = tip_nepremicnine_element.text.strip() if tip_nepremicnine_element else 'N/A'
