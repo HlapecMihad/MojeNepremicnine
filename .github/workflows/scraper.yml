@@ -36,12 +36,18 @@ jobs:
           sudo apt update
           sudo apt install -y microsoft-edge-stable
 
+      - name: Verify Microsoft Edge Installation
+        run: microsoft-edge --version
+
       - name: Install Edge WebDriver
         run: |
           EDGE_VERSION=$(microsoft-edge --version | grep -oP '\d+\.\d+\.\d+\.\d+')
           wget "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip"
           sudo unzip edgedriver_linux64.zip -d /usr/local/bin/
           sudo mv /usr/local/bin/msedgedriver /usr/local/bin/edgedriver
+
+      - name: Verify Edge WebDriver Installation
+        run: edgedriver --version
 
       - name: Set up environment variable for Edge
         run: echo "EDGE_BINARY_PATH=$(which microsoft-edge)" >> $GITHUB_ENV

@@ -15,9 +15,12 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 json_dir = os.path.join(base_dir, '..', 'JSON')
 
 options = webdriver.EdgeOptions()
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
-# Use Service to specify the executable path
 service = Service(EdgeChromiumDriverManager().install())
 
 driver = webdriver.Edge(service=service, options=options)
@@ -31,6 +34,7 @@ try:
     ).click()
 except Exception as e:
     print("No 'Allow Cookies' button found or error clicking it:", e)
+
 
 
 def transform_tip_nepremicnine(tip_nepremicnine: str) -> str:
