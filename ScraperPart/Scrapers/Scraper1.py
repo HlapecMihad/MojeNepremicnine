@@ -13,9 +13,10 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 base_dir = os.path.dirname(os.path.abspath(__file__))
 json_dir = os.path.join(base_dir, '..', 'JSON')
 
+options = webdriver.EdgeOptions()
+options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
-driver = webdriver.Edge(EdgeChromiumDriverManager().install())
-
+driver = webdriver.Edge(executable_path=EdgeChromiumDriverManager().install(), options=options)
 
 base_url = 'https://www.re-max.si/PublicListingList.aspx'
 driver.get(base_url)
@@ -26,7 +27,6 @@ try:
     ).click()
 except Exception as e:
     print("No 'Allow Cookies' button found or error clicking it:", e)
-
 
 def transform_tip_nepremicnine(tip_nepremicnine: str) -> str:
     mapping = {
