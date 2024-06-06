@@ -34,16 +34,19 @@ jobs:
       - name: Install Microsoft Edge
         run: |
           sudo apt update
-          sudo apt install microsoft-edge-stable
+          sudo apt install -y microsoft-edge-stable
 
       - name: Install Edge WebDriver
         run: |
           EDGE_VERSION=$(microsoft-edge --version | grep -oP '\d+\.\d+\.\d+\.\d+')
           wget "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip"
-          unzip edgedriver_linux64.zip -d /usr/local/bin/
+          sudo unzip edgedriver_linux64.zip -d /usr/local/bin/
 
+      - name: Set up environment variable for Edge
+        run: echo "EDGE_BINARY_PATH=$(which microsoft-edge)" >> $GITHUB_ENV
 
       - name: Run scraper script
         env:
           PATH: /usr/local/bin:$PATH
+          EDGE_BINARY_PATH: ${{ env.EDGE_BINARY_PATH }}
         run: python ScraperPart/main/scraper_vse_skupaj.py
