@@ -16,8 +16,7 @@ json_dir = os.path.join(base_dir, '..', 'JSON')
 options = webdriver.EdgeOptions()
 options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
-driver_path = EdgeChromiumDriverManager().install()
-driver = webdriver.Edge(driver_path, options=options)
+driver = webdriver.Edge(executable_path=EdgeChromiumDriverManager().install(), options=options)
 
 base_url = 'https://www.re-max.si/PublicListingList.aspx'
 driver.get(base_url)
