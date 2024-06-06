@@ -11,7 +11,7 @@ const ComparisonPage = () => {
     return (
       <div className="comparison-page">
         <h1 className="middle">Primerjava nepremičnin</h1>
-        <p className="middle">Nobena nepremičnina ni bila izbrana.</p>
+        <p className="middle1">Nobena nepremičnina ni bila izbrana.</p>
       </div>
     );
   }
@@ -33,7 +33,7 @@ const ComparisonPage = () => {
     }));
   };
 
-  const renderValue = (value) => (value === 0 ? "Ni na voljo" : value);
+  const renderValue = (value) => (value === null ? "Ni na voljo" : value);
 
   const attributeNames = {
     posredovanje: "Posredovanje",
@@ -64,7 +64,7 @@ const ComparisonPage = () => {
               <th className="attribute-column special-moj">
                 <button
                   onClick={toggleHighlight}
-                  className="toggle-highlight-button middle center-moj"
+                  className="btn-search m-2"
                 >
                   {highlightDifferences ? "Skrij razlike" : "Prikaži razlike"}
                 </button>

@@ -53,11 +53,14 @@ def pridobi_podrobnosti_strani(url):
 
     ##### cena
     cena_element = soup.select_one(".value")
-    cena = cena_element.get_text(strip=True).rstrip("€") if cena_element else "N/A"
+    cena = float(cena_element.get_text(strip=True).rstrip("€").replace(".",'').replace(',','.').replace('€\n              /\n              m2','')) if cena_element else None
 
         
-    #### Tip nepremicnine    #### POPRAVI
+    #### Tip nepremicnine    
     tip_nepremicnine = soup.select_one(".info_list").find_next("li").get_text(strip=True)
+    if(tip_nepremicnine == "Parcela"): 
+        tip_nepremicnine = 'Zemljišče'
+
 
     ##### image_urls
     image_elements = soup.select('.gallery a')
@@ -66,48 +69,49 @@ def pridobi_podrobnosti_strani(url):
     ##### st_sob
     st_sob_element = soup.select_one(".ico_8")
     st_sob = (
-        st_sob_element.find_next("strong").get_text(strip=True)
+        float(st_sob_element.find_next("strong").get_text(strip=True))
         if st_sob_element
-        else "N/A"
+        else None
     )
 
     ##### st_spalnic
     st_spalnic_element = soup.select_one(".ico_9")
     st_spalnic = (
-        st_spalnic_element.find_next("strong").get_text(strip=True)
+        float(st_spalnic_element.find_next("strong").get_text(strip=True)) 
         if st_spalnic_element
-        else "N/A"
+        else None
     )
 
     ##### st_kopalnic
     st_kopalnic_element = soup.select_one(".ico_11")
     st_kopalnic = (
-        st_kopalnic_element.find_next("strong").get_text(strip=True)
+        float(st_kopalnic_element.find_next("strong").get_text(strip=True))
         if st_kopalnic_element
-        else "N/A"
+        else None
     )
 
     ##### leto_izgradnje
     leto_izgradnje_element = soup.select_one(".ico_6")
     leto_izgradnje = (
-        leto_izgradnje_element.find_next("strong").get_text(strip=True)
+        float(leto_izgradnje_element.find_next("strong").get_text(strip=True))
         if leto_izgradnje_element
-        else "N/A"
+        else None
     )
 
     ##### st_nadstropij
     st_nadstropij_element = soup.select_one(".ico_5")
-    st_nadstropij = (
-        st_nadstropij_element.find_next("strong").get_text(strip=True)
-        if st_nadstropij_element
-        else "N/A"
-    )
+    st_nadstropij_text = st_nadstropij_element.find_next("strong").get_text(strip=True) if st_nadstropij_element else None
+
+    if st_nadstropij_text and st_nadstropij_text.isdigit():
+        st_nadstropij = float(st_nadstropij_text)
+    else:
+        st_nadstropij = None
 
     ##### velikost_zemljisca
-    velikost_zemljisca = soup.select_one('.ico_4').find_next('strong').get_text(strip=True) if soup.select_one('.ico_4') else 'N/A'
+    velikost_zemljisca = float(soup.select_one('.ico_4').find_next('strong').get_text(strip=True).replace(' m2','').replace('.','').replace(',','.')) if soup.select_one('.ico_4') else None
 
     ##### velikost_skupaj
-    velikost_skupaj = soup.select_one('.ico_3').find_next('strong').get_text(strip=True) if soup.select_one('.ico_3') else 'N/A'
+    velikost_skupaj = float(soup.select_one('.ico_3').find_next('strong').get_text(strip=True).replace(' m2','').replace('.','').replace(',','.')) if soup.select_one('.ico_3') else None
 
     ##### id_nepremicnine
     id_nepremicnine_element = soup.select_one(".estate_id")
@@ -131,7 +135,7 @@ def pridobi_podrobnosti_strani(url):
 
     return {
         "naziv": naziv,
-        "posredovanje": "Prodaja",  # IMPLEMENTIRAJ
+        "posredovanje": "Prodaja",  
         "link": url,
         "tip_nepremicnine": tip_nepremicnine,
         "lokacija": naziv.strip() if naziv_element else "N/A",
@@ -159,16 +163,16 @@ def pridobi_podrobnosti_strani(url):
 #### ZANKA
 #### Pojdi skozi vse strani, dokler ni več najdenih nepremicnin  /// while True  ali   while counter < 1
 counter = 0
-while counter < 1:
+while True:
     url = f"{korenski_url_podrobno}{stran}"
-    print(f"Pridobivam linke iz strani {stran}...")
+    print(f"Pridobivam linke iz strani {stran}... ROK")
     detail_links = pridobi_link_podstrani(url)
 
     if not detail_links:
         break
 
     for detail_url in detail_links:
-        print(f"Pridobivam podatke o nepremicnini na linku {detail_url}...")
+        print(f"Pridobivam podatke o nepremicnini na linku {detail_url}... ROK")
         property_data = pridobi_podrobnosti_strani(detail_url)
         if property_data:
             nepremicnine.append(property_data)

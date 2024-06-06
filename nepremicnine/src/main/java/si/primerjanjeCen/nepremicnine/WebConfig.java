@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins(
                         "https://praktikum2-deploy-git-main-lukas-projects-10bd2c33.vercel.app",
-                        "http://localhost:3000",
+                        "http://localhost:3000", // Include localhost (assuming your local frontend runs on port 3000)
                         "http://localhost:8180/api",
                         "http://localhost:8180",
                         "https://praktikum-2.vercel.app"
