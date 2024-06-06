@@ -2,7 +2,7 @@ name: Weekly Scraper
 
 on:
   schedule:
-    - cron: '30 14 * * 4'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -30,27 +30,6 @@ jobs:
           pip install -r ScraperPart/requirements.txt
           pip install webdriver-manager
 
-      - name: Get public IP address
-        id: get_ip
-        run: |
-          IP=$(curl -s https://api.ipify.org)
-          echo "Public IP: $IP"
-          echo "IP=$IP" >> $GITHUB_ENV
-
-      - name: Debug IP Address
-        run: echo "IP Address is ${{ env.IP }}"
-
-      - name: Add IP to MongoDB Atlas whitelist
-        run: |
-          IP=$(echo ${{ env.IP }})
-          echo "Adding IP to MongoDB Atlas whitelist: $IP"
-          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X POST \
-          "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList" \
-          -H "Content-Type: application/json" \
-          -d "{\"ipAddress\":\"${IP}\",\"comment\":\"GitHub Actions runner\"}")
-          echo "Response: $RESPONSE"
-          cat response.json
-
       - name: Wait for Selenium to be ready
         run: |
           timeout 300s bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/localhost/4444; do sleep 5; done'
@@ -60,12 +39,3 @@ jobs:
           PATH: /usr/local/bin:$PATH
         run: python ScraperPart/main/scraper_vse_skupaj.py
 
-      - name: Remove IP from MongoDB Atlas whitelist
-        if: always()
-        run: |
-          IP=$(echo ${{ env.IP }})
-          echo "Removing IP from MongoDB Atlas whitelist: $IP"
-          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X DELETE \
-          "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList/${IP}")
-          echo "Response: $RESPONSE"
-          cat response.json
