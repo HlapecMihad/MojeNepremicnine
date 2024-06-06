@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Filter from "./Filter";
 import TuneIcon from "@mui/icons-material/Tune";
 import FlatList from "./FlatList";
+import api from "../services/api";
 
 const Banner = () => {
   const [search, setSearch] = useState([]);
@@ -11,6 +12,7 @@ const Banner = () => {
   const [word, setWord] = useState("");
   const [showFilter, setShowFilter] = useState(false); // State for managing the Filter visibility
   const [selectedButton, setSelectedButton] = useState("prodaja"); // State for managing the selected button
+  const [count, setCount] = useState(0); // State for managing the count
 
   // Filter state
   const [filters, setFilters] = useState({
@@ -62,6 +64,17 @@ const Banner = () => {
   };
 
   useEffect(() => {
+    api
+      .get("/nepremicnine/count")
+      .then((response) => {
+        setCount(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the nepremicnine!", error);
+      });
+  }, []);
+
+  useEffect(() => {
     // Update the naziv filter when the search word changes
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -80,22 +93,29 @@ const Banner = () => {
             <div className="row">
               <div className="col-lg-6 mx-auto">
                 <div className="banner-area text-center pt-4 pb-4">
-                  <div className="button-group mb-3 d-flex justify-content-start">
+                  <h2 className="mt-2 mb-4 banner-title">
+                    <strong>Moje Nepremičnine</strong>
+                  </h2>
+                  <p>
+                    Trenutno lahko iščete med {count} nepremičninami v Sloveniji
+                  </p>
+
+                  <div className="button-group mb-1 d-flex justify-content-start">
                     <button
-                      className={`btn mx-2 ${
+                      className={` ${
                         selectedButton === "prodaja"
-                          ? "btn-primary"
-                          : "btn-secondary"
+                          ? "btn-prodaja"
+                          : "btn-oddaja"
                       }`}
                       onClick={() => handleButtonClick("prodaja")}
                     >
                       Prodaja
                     </button>
                     <button
-                      className={`btn mx-2 ${
+                      className={` ${
                         selectedButton === "oddaja"
-                          ? "btn-primary"
-                          : "btn-secondary"
+                          ? "btn-prodaja"
+                          : "btn-oddaja"
                       }`}
                       onClick={() => handleButtonClick("oddaja")}
                     >
@@ -110,7 +130,7 @@ const Banner = () => {
                       style={{ outline: "none" }}
                     >
                       {showFilter ? (
-                        <i className="fa2 fa fa-times" aria-hidden="true"></i>
+                        <i className="fa fa-times" aria-hidden="true"></i>
                       ) : (
                         <TuneIcon />
                       )}

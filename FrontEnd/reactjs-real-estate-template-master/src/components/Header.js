@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ComparisonContext } from "../other/ComparisonContext";
 import UporabnikDropdown from "./UporabnikDropdown";
 import { Collapse } from "bootstrap";
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import LoginIcon from '@mui/icons-material/Login';
 
 const Header = () => {
   const { comparisonList } = useContext(ComparisonContext);
@@ -65,7 +67,7 @@ const Header = () => {
                     to="/primerjanje"
                     onClick={handleNavLinkClick}
                   >
-                    Primerjanje
+                    <CompareArrowsIcon className='icon-margin-right2' /> Primerjanje
                     {comparisonList.length > 0 && (
                       <span
                         className="badge bg-secondary ms-1"
@@ -92,7 +94,7 @@ const Header = () => {
                         to="/prijava"
                         onClick={handleNavLinkClick}
                       >
-                        Prijava
+                       <LoginIcon className='icon-margin-right2' /> Prijava
                       </Link>
                     </li>
                   </>

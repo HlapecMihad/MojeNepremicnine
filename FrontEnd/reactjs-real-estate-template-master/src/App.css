@@ -214,7 +214,7 @@
   font-size: 14px;
   text-align: left;
   color: #364465;
-  min-height: 50px;
+  min-height: 60px;
 }
 .section-all-re .item-price{
   font-weight: bold;
@@ -230,6 +230,7 @@
   font-weight: 500;
   font-size: 15px;
   display: flex;align-items: center;
+  min-height: 60px;
 }
 .btn-detail{
   background-color: #364465;
@@ -956,12 +957,7 @@ tbody tr:nth-child(even) {
   padding: 15px;
 }
 
-.item-title,
-.item-price,
-.item-icon,
-.item-buttons {
-  margin-bottom: 15px;
-}
+
 
 .item-title span,
 .item-price span {
@@ -1294,4 +1290,133 @@ tbody tr:nth-child(even) {
 .fontOptions {
    font-weight: 450;
    font-family: Arial, sans-serif;
+}
+
+.fontOptions2 {
+   font-weight: 500;
+   font-family: Arial, sans-serif;
+   font-size: 40px;
+}
+
+.button-group {
+   display: flex;
+   gap: 5px;
+ }
+ 
+ .btn-prodaja,
+ .btn-oddaja {
+   transition: background-color 0.3s, transform 0.3s;
+   padding: 10px 20px;
+   border: none;
+   cursor: pointer;
+   border-radius: 5px;
+ }
+ 
+ .btn-prodaja {
+   background: linear-gradient(135deg, #364465 0%, #2d3751 100%);
+   color: #fff;
+ }
+ 
+ .btn-oddaja {
+   background-color: #6c757d;
+   color: #fff;
+ }
+ 
+ .btn-prodaja:hover {
+   background: linear-gradient(135deg, #2c3b59 0%, #252d40 100%); 
+   transform: scale(1.05);
+ }
+ 
+ .btn-oddaja:hover {
+   background-color: #5a6268;
+   transform: scale(1.05);
+ }
+
+ .icon-margin-right {
+   margin-right: 8px;
+ }
+
+ .icon-margin-right2 {
+   margin-right: 4px;
+ }
+
+ .icon-margin-left {
+   margin-left: 8px;
+ }
+
+.justify {
+   justify-content: space-between;
+   display: flex;
+}
+
+.footer {
+   background-color: #343a40; /* Adjust as needed */
+   color: #ffffff; /* Adjust as needed */
+   padding: 40px 0; /* Adjust as needed */
+}
+
+.footer .container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   text-align: center;
+}
+
+.footer .row {
+   width: 100%;
+}
+
+.footer-title {
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+
+.footer-other-text {
+   font-size: 1rem;
+   line-height: 1.5;
+}
+
+.footer-social {
+   margin-top: 20px;
+}
+
+.footer-social-item {
+   font-size: 1.5rem;
+   color: #ffffff; /* Adjust as needed */
+}
+
+.footer-info-item {
+   font-size: 1.2rem;
+   color: #ffffff; /* Adjust as needed */
+   margin-right: 10px;
+}
+
+.footer-ul {
+   list-style: none;
+   padding: 0;
+}
+
+.footer-ul li {
+   margin-bottom: 10px;
+}
+
+.footer-ul li span {
+   font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+   .footer .container {
+       flex-direction: row;
+       text-align: left;
+   }
+
+   .footer .col-md-6 {
+       text-align: left;
+   }
+}
+
+.ul-margin-left {
+   margin-left: 120px;
 }

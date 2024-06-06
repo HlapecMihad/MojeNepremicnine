@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import FlatItem from "./FlatItem";
 import api from "../services/api";
+import FlatItem from "./FlatItem";
 
 const FavoriteProperties = () => {
   const [favoriteProperties, setFavoriteProperties] = useState([]);

@@ -64,7 +64,7 @@ const ComparisonPage = () => {
               <th className="attribute-column special-moj">
                 <button
                   onClick={toggleHighlight}
-                  className="toggle-highlight-button middle center-moj"
+                  className="btn-search m-2"
                 >
                   {highlightDifferences ? "Skrij razlike" : "Prikaži razlike"}
                 </button>

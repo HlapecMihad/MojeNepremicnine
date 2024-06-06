@@ -49,6 +49,13 @@ public class NepremicninaController {
         return response;
     }
 
+    @GetMapping("count")
+    public long prestejVseNepremicnine() {
+        long countNepremicnine = nepremicninaDao.count();
+        long countNepremicnineOddaja = nepremicninaDaoOddaja.count();
+        return countNepremicnine + countNepremicnineOddaja;
+    }
+
     @GetMapping("filtri")
     public Page<?> getFilteredNepremicnine(
             @RequestParam(required = false) String posredovanje,
@@ -76,7 +83,7 @@ public class NepremicninaController {
             query.addCriteria(Criteria.where("tip_nepremicnine").is(tip_nepremicnine));
         }
         if (lokacija != null && !lokacija.isEmpty()) {
-            query.addCriteria(Criteria.where("lokacija").is(lokacija));
+            query.addCriteria(Criteria.where("lokacija").regex(".*" + lokacija + ".*",  "i"));
         }
 
         if (cenaMin != null || cenaMax != null) {

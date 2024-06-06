@@ -207,14 +207,18 @@ const OddajaPage = () => {
           <div>Loading...</div>
         ) : (
           <>
-            <h3 className="middle">ODDAJA</h3>
+            <h3 className="middle fontOptions2">Oddaja</h3>
             <button
               className="btn-filter m-2"
               title="Filtriraj"
               onClick={handleFilterButtonClick}
               style={{ outline: "none" }}
             >
-              <TuneIcon />
+              {showFilter ? (
+                <i className="fa fa-times" aria-hidden="true"></i>
+              ) : (
+                <TuneIcon />
+              )}
             </button>
             {showFilter && (
               <Filter
@@ -242,17 +246,23 @@ const OddajaPage = () => {
                 </div>
               </div>
             </div>
-            <ul className="row">
-              {nepremicnine.map((nepremicnina) => (
-                <FlatItem
-                  key={nepremicnina.id_nepremicnine}
-                  nepremicnina={nepremicnina}
-                />
-              ))}
-            </ul>
-            <ul className="pagination justify-content-center">
-              {renderPagination()}
-            </ul>
+            {nepremicnine.length === 0 ? (
+                <h3 className="middle">Nobena nepremičnina ne ustreza filtrom.</h3>
+            ) : (
+              <>
+                <ul className="row">
+                  {nepremicnine.map((nepremicnina) => (
+                    <FlatItem
+                      key={nepremicnina.id_nepremicnine}
+                      nepremicnina={nepremicnina}
+                    />
+                  ))}
+                </ul>
+                <ul className="pagination justify-content-center">
+                  {renderPagination()}
+                </ul>
+              </>
+            )}
           </>
         )}
       </div>

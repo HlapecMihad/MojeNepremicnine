@@ -6,6 +6,7 @@ import noImage from "../noImage.jpg";
 import api from "../services/api";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import "../App.css";
 
 const FlatItem = ({ nepremicnina }) => {
   const { id, naziv, cena, image_urls, posredovanje, agencija } = nepremicnina;
@@ -82,7 +83,12 @@ const FlatItem = ({ nepremicnina }) => {
     <div className="text-center col-lg-4 col-12 col-md-6">
       <div className="item">
         <div className="item-image">
+        <Link
+              to={{ pathname: `/nepremicnina/${id}`, state: { nepremicnina } }}
+              className="item-title"
+            >
           <img className="img-fluid" src={imageUrl} alt={naziv} />
+         </Link>
         </div>
         <div className="item-description">
           <div>
@@ -108,7 +114,7 @@ const FlatItem = ({ nepremicnina }) => {
               to={{ pathname: `/nepremicnina/${id}`, state: { nepremicnina } }}
               className="item-title"
             >
-              <button className="btn-1 btn-detail">Poglej</button>
+              <button className="btn-1 btn-detail mt-2">Poglej</button>
             </Link>
             {isInComparison ? (
               <button
