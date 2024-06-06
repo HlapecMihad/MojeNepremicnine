@@ -2,12 +2,18 @@ name: Weekly Scraper
 
 on:
   schedule:
-    - cron: '30 14 * * 4'
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    services:
+      selenium:
+        image: selenium/standalone-edge:latest
+        options: --privileged
+        ports:
+          - 4444:4444
 
     steps:
       - name: Checkout repository
@@ -24,30 +30,11 @@ jobs:
           pip install -r ScraperPart/requirements.txt
           pip install webdriver-manager
 
-      - name: Add Microsoft package repository
+      - name: Wait for Selenium to be ready
         run: |
-          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-          sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
-          sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
-          sudo rm microsoft.gpg
-
-      - name: Install Microsoft Edge
-        run: |
-          sudo apt update
-          sudo apt install -y microsoft-edge-stable
-
-      - name: Install Edge WebDriver
-        run: |
-          EDGE_VERSION=$(microsoft-edge --version | grep -oP '\d+\.\d+\.\d+\.\d+')
-          wget "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip"
-          sudo unzip edgedriver_linux64.zip -d /usr/local/bin/
-          sudo mv /usr/local/bin/msedgedriver /usr/local/bin/edgedriver
-
-      - name: Set up environment variable for Edge
-        run: echo "EDGE_BINARY_PATH=$(which microsoft-edge)" >> $GITHUB_ENV
+          timeout 300s bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/localhost/4444; do sleep 5; done'
 
       - name: Run scraper script
         env:
           PATH: /usr/local/bin:$PATH
-          EDGE_BINARY_PATH: ${{ env.EDGE_BINARY_PATH }}
         run: python ScraperPart/main/scraper_vse_skupaj.py

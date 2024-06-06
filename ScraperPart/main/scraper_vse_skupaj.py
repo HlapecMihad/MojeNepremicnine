@@ -63,7 +63,7 @@ def send_to_mongodbProdaja(data):
     print("Sending data to MongoDB...")
     client = pymongo.MongoClient("mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/")
     db = client["nepremicnine"]
-    collection = db["nepremicnine_prodaja"]
+    collection = db["nepremicnine_prodaja_avtomatizacija"]
     
     if isinstance(data, list):
         collection.insert_many(data)
@@ -75,7 +75,7 @@ def send_to_mongodbOddaja(data):
     print("Sending data to MongoDB...")
     client = pymongo.MongoClient("mongodb+srv://admin:admin@dbcluster.d2ungtz.mongodb.net/")
     db = client["nepremicnine"]
-    collection = db["nepremicnine_oddaja"]
+    collection = db["nepremicnine_oddaja_avtomatizacija"]
     
     if isinstance(data, list):
         collection.insert_many(data)
