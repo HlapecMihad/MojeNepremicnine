@@ -30,6 +30,18 @@ jobs:
           pip install -r ScraperPart/requirements.txt
           pip install webdriver-manager
 
+      - name: Get public IP address
+        id: get_ip
+        run: echo "IP=$(curl -s https://api.ipify.org)" >> $GITHUB_ENV
+
+      - name: Add IP to MongoDB Atlas whitelist
+        run: |
+          IP=$(echo ${{ env.IP }})
+          curl -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X POST \
+          "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList" \
+          -H "Content-Type: application/json" \
+          -d "{\"ipAddress\":\"${IP}\",\"comment\":\"GitHub Actions runner\"}"
+
       - name: Wait for Selenium to be ready
         run: |
           timeout 300s bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/localhost/4444; do sleep 5; done'
@@ -38,3 +50,10 @@ jobs:
         env:
           PATH: /usr/local/bin:$PATH
         run: python ScraperPart/main/scraper_vse_skupaj.py
+
+      - name: Remove IP from MongoDB Atlas whitelist
+        if: always()
+        run: |
+          IP=$(echo ${{ env.IP }})
+          curl -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X DELETE \
+          "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList/${IP}"
