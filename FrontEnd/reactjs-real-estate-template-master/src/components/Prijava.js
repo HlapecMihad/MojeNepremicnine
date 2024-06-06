@@ -49,7 +49,21 @@ const Prijava = () => {
     };
 
     return (
-        <Box sx={{ padding: 3, maxWidth: 700, margin: 'auto', minHeight: '70vh', display: 'flex', alignItems: 'center'}}>
+      <div>
+         <div>
+            <h1 className="middle marginTopPrijava">Prijava</h1>
+         </div>
+        <Box sx={{ 
+            padding: 3, 
+            maxWidth: 700, 
+            margin: 'auto',
+            marginBottom: 3, 
+            minHeight: '60vh', 
+            display: 'flex', 
+            alignItems: 'center',
+            boxShadow: 3, 
+            borderRadius: 2 
+         }}>
             <Formik
                 initialValues={{
                     email: '',
@@ -172,6 +186,7 @@ const Prijava = () => {
                 )}
             </Formik>
         </Box>
+      </div>
     );
 };
 

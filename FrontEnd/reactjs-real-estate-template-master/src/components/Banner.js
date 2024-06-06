@@ -10,7 +10,6 @@ const Banner = () => {
   const [find, setFind] = useState([]);
   const [word, setWord] = useState("");
   const [showFilter, setShowFilter] = useState(false); // State for managing the Filter visibility
-  const [icon, setIcon] = useState("fa-filter"); // State for managing the icon
   const [selectedButton, setSelectedButton] = useState("prodaja"); // State for managing the selected button
 
   // Filter state
@@ -39,18 +38,15 @@ const Banner = () => {
 
   const handleFilterButtonClick = () => {
     setShowFilter(!showFilter);
-    setIcon(showFilter ? "fa-filter" : "fa-times");
   };
 
   const handleCloseFilter = () => {
     setShowFilter(false);
-    setIcon("fa-filter");
   };
 
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters);
     setShowFilter(false);
-    setIcon("fa-filter");
   };
 
   const handleButtonClick = (button) => {
@@ -113,7 +109,11 @@ const Banner = () => {
                       onClick={handleFilterButtonClick}
                       style={{ outline: "none" }}
                     >
-                      <TuneIcon />
+                      {showFilter ? (
+                        <i className="fa2 fa fa-times" aria-hidden="true"></i>
+                      ) : (
+                        <TuneIcon />
+                      )}
                     </button>
                     <input
                       value={word}

@@ -20,7 +20,7 @@ const FlatList = () => {
 
   return (
     <section className="section-all-re">
-      <h2 className="middle">Zadnje dodani oglasi</h2>
+      <h2 className="middle fontOptions">Zadnje dodani oglasi</h2>
       <div className="container">
         <ul className="row">
           {nepremicnine.map((nepremicnina) => (

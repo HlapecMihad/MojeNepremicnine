@@ -1282,3 +1282,16 @@ tbody tr:nth-child(even) {
 .fa2:hover {
    color: red;
 }
+
+.marginTopPrijava {
+   margin-top: 40px;
+   margin-bottom: -60px;
+   font-weight: 450;
+   font-family: Arial, sans-serif;
+}
+
+
+.fontOptions {
+   font-weight: 450;
+   font-family: Arial, sans-serif;
+}

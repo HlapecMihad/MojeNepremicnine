@@ -61,7 +61,7 @@ const Header = () => {
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
                   <Link
-                    className="nav-link"
+                    className="nav-link fontOptions"
                     to="/primerjanje"
                     onClick={handleNavLinkClick}
                   >
@@ -79,6 +79,7 @@ const Header = () => {
                 {user ? (
                   <li className="nav-item">
                     <UporabnikDropdown
+                    className="fontOptions"
                       user={user}
                       handleLogout={handleLogout}
                     />
@@ -87,7 +88,7 @@ const Header = () => {
                   <>
                     <li className="nav-item">
                       <Link
-                        className="nav-link"
+                        className="nav-link fontOptions"
                         to="/prijava"
                         onClick={handleNavLinkClick}
                       >
