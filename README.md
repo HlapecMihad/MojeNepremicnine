@@ -9,7 +9,8 @@ Projekt **Primerjevalnik nepremičnin** je spletna aplikacija, namenjena prikazo
 - **Primerjava oglasov**: Uporabniki lahko primerjajo več oglasov med seboj za lažje odločanje.
 - **Filtriranje oglasov**: Oglase je mogoče filtrirati glede na različne lastnosti (npr. število sob, leto gradnje, opremljenost ipd.).
 - **Shranjevanje priljubljenih oglasov**: Oglase, ki so nam všeč, si lahko shranimo pod priljubljene.
-
+- **Avtomatizacija scraperjev**: Vsako nedeljo ob polnoči se avtomatsko zaženejo scraperji in se posodobi baza
+  
 ### Tehnologije
 Aplikacija je sestavljena iz frontend in backend delov:
 - **Frontend**: Zgrajen z uporabo React.js, omogoča dinamičen in odziven uporabniški vmesnik.
@@ -37,6 +38,10 @@ Aplikacija je sestavljena iz frontend in backend delov:
 ### Komunikacija med Frontend-om in Backend-om
 - **Protokol**: REST
 - **Opis**: Komunikacija poteka preko REST API klicev, kjer frontend pošilja zahteve na backend, ki nato vrne ustrezne podatke.
+  
+## UPORABA
+- **Main Branch** je uporabljen za deployment; stran je dostopna na: https://praktikum-2.vercel.app/ (Opomnik: Po določenem času neaktivnosti se backend ustavi (free verzija) in rabi 4-5 min da se vse znova vzpostavi)
+- **Development Branch** se uporablja za lokalno rabo
 
 ## NAMESTITEV
 
