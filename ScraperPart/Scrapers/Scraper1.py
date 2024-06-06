@@ -20,6 +20,7 @@ options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--remote-debugging-port=9222')
+options.add_argument('--disable-software-rasterizer')
 options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
 service = Service('/usr/local/bin/edgedriver')
