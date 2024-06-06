@@ -8,8 +8,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from selenium.webdriver.edge.service import Service
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 json_dir = os.path.join(base_dir, '..', 'JSON')
@@ -20,15 +18,11 @@ options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--remote-debugging-port=9222')
-options.add_argument('--disable-software-rasterizer')
-options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
-print(f"Using Edge binary at: {options.binary_location}")
-
-service = Service('/usr/local/bin/edgedriver')
-print(f"Using Edge WebDriver service at: {service.path}")
-
-driver = webdriver.Edge(service=service, options=options)
+driver = webdriver.Remote(
+    command_executor='http://localhost:4444/wd/hub',
+    options=options
+)
 
 base_url = 'https://www.re-max.si/PublicListingList.aspx'
 driver.get(base_url)
