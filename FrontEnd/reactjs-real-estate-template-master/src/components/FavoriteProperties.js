@@ -46,7 +46,7 @@ const FavoriteProperties = () => {
 
   if (favoriteProperties.length === 0) {
     return (
-      <div className="comparison-page">
+      <div className="section-all-re">
         <h1 className="middle">Priljubljene nepremičnine</h1>
         <p className="middle1">Nobena nepremičnina ni bila izbrana.</p>
       </div>
@@ -54,14 +54,18 @@ const FavoriteProperties = () => {
   }
 
   return (
-    <div className="favorite-properties">
-      <h1 className="middle">Priljubljene nepremičnine</h1>
-      <div className="row">
-        {favoriteProperties.map((property) => (
-          <FlatItem key={property.id} nepremicnina={property} />
-        ))}
+    <section className="section-all-re">
+      <h1 className="middle" style={{ padding: "20px" }}>
+        Priljubljene nepremičnine
+      </h1>
+      <div className="container">
+        <ul className="row">
+          {favoriteProperties.map((property) => (
+            <FlatItem key={property.id} nepremicnina={property} />
+          ))}
+        </ul>
       </div>
-    </div>
+    </section>
   );
 };
 
