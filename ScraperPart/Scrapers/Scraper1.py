@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 json_dir = os.path.join(base_dir, '..', 'JSON')
