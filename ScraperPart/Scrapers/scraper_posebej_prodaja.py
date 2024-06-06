@@ -91,7 +91,10 @@ def scrape_data(url):
             tip_parts = tip_text.split(',', 1)
             if len(tip_parts) > 1 and 'Stanovanje' in tip_parts[0].strip():
                 second_part = tip_parts[1].strip()
-                rooms = '1' if second_part == 'Garsonjera' else second_part
+                if second_part == "Drugo":
+                    rooms= None
+                else:
+                    rooms = '1' if second_part == 'Garsonjera' else second_part
             else:
                 second_part = tip_parts[1].strip()
                 rooms = float(second_part.split('-')[0].replace(',','.').replace('+',''))

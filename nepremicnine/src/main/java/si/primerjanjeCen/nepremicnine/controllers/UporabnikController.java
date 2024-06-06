@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import si.primerjanjeCen.nepremicnine.dao.NepremicninaRepository;
 import si.primerjanjeCen.nepremicnine.dao.UporabnikRepository;
 import si.primerjanjeCen.nepremicnine.services.PasswordService;
-import si.primerjanjeCen.nepremicnine.vao.Nepremicnina;
 import si.primerjanjeCen.nepremicnine.vao.Uporabnik;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
