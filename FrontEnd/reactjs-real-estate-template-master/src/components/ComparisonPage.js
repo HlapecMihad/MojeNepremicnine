@@ -7,6 +7,13 @@ const ComparisonPage = () => {
     useContext(ComparisonContext);
   const [highlightDifferences, setHighlightDifferences] = useState(false);
 
+  const formatPrice = (price) => {
+    if (price) {
+      const parts = price.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return parts.join(",");
+    }
+  };
   if (comparisonList.length === 0) {
     return (
       <div className="comparison-page">
@@ -33,7 +40,11 @@ const ComparisonPage = () => {
     }));
   };
 
-  const renderValue = (value) => (value === null ? "Ni na voljo" : value);
+  const renderValue = (attr, value) => {
+    if (value === null) return "Ni na voljo";
+    if (attr === "cena") return formatPrice(value) + " €";
+    return value;
+  };
 
   const attributeNames = {
     posredovanje: "Posredovanje",
@@ -62,10 +73,7 @@ const ComparisonPage = () => {
           <thead>
             <tr>
               <th className="attribute-column special-moj">
-                <button
-                  onClick={toggleHighlight}
-                  className="btn-search m-2"
-                >
+                <button onClick={toggleHighlight} className="btn-search m-2">
                   {highlightDifferences ? "Skrij razlike" : "Prikaži razlike"}
                 </button>
               </th>
@@ -124,9 +132,9 @@ const ComparisonPage = () => {
                     {comparisonList.map((item) => (
                       <td key={item.id} className="comparison-column">
                         {highlightDifferences && attributeDiffers(attr) ? (
-                          <strong>{renderValue(item[attr])}</strong>
+                          <strong>{renderValue(attr, item[attr])}</strong>
                         ) : (
-                          renderValue(item[attr])
+                          renderValue(attr, item[attr])
                         )}
                       </td>
                     ))}

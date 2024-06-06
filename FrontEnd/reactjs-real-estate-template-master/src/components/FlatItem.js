@@ -13,8 +13,17 @@ const FlatItem = ({ nepremicnina }) => {
   const { comparisonList, addToComparison, removeFromComparison } =
     useContext(ComparisonContext);
 
+  const formatPrice = (price) => {
+    if (price) {
+      const parts = price.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return parts.join(",");
+    }
+  };
   const formattedCena =
-    posredovanje === "Oddaja" ? `${cena} €/mesec` : `${cena} €`;
+    posredovanje === "Oddaja"
+      ? `${formatPrice(cena)} €/mesec`
+      : `${formatPrice(cena)} €`;
 
   const isInComparison = comparisonList.some((item) => item.id === id);
 
@@ -30,7 +39,12 @@ const FlatItem = ({ nepremicnina }) => {
     removeFromComparison(id);
   };
 
-  const imageUrl = image_urls.length > 0 ? image_urls[0] : noImage;
+  let imageUrl;
+  if (image_urls) {
+    imageUrl = image_urls.length > 0 ? image_urls[0] : noImage;
+  } else {
+    imageUrl = noImage;
+  }
 
   const [isFavorited, setIsFavorited] = useState(false);
 
@@ -83,12 +97,12 @@ const FlatItem = ({ nepremicnina }) => {
     <div className="text-center col-lg-4 col-12 col-md-6">
       <div className="item">
         <div className="item-image">
-        <Link
-              to={{ pathname: `/nepremicnina/${id}`, state: { nepremicnina } }}
-              className="item-title"
-            >
-          <img className="img-fluid" src={imageUrl} alt={naziv} />
-         </Link>
+          <Link
+            to={{ pathname: `/nepremicnina/${id}`, state: { nepremicnina } }}
+            className="item-title"
+          >
+            <img className="img-fluid" src={imageUrl} alt={naziv} />
+          </Link>
         </div>
         <div className="item-description">
           <div>

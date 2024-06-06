@@ -43,12 +43,17 @@ const FlatDetail = () => {
     lastnosti,
   } = nepremicnina;
 
-  let formattedCena;
-  if (cena !== null) {
-    formattedCena = posredovanje === "Oddaja" ? `${cena} €/mesec` : `${cena} €`;
-  } else {
-    formattedCena = "Po dogovoru";
-  }
+  const formatPrice = (price) => {
+    if (price) {
+      const parts = price.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return parts.join(",");
+    }
+  };
+  const formattedCena =
+    posredovanje === "Oddaja"
+      ? `${formatPrice(cena)} €/mesec`
+      : `${formatPrice(cena)} €`;
 
   const images = image_urls.map((url) => ({
     original: url,
