@@ -44,10 +44,12 @@ jobs:
         run: |
           IP=$(echo ${{ env.IP }})
           echo "Adding IP to MongoDB Atlas whitelist: $IP"
-          curl -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X POST \
+          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X POST \
           "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList" \
           -H "Content-Type: application/json" \
-          -d "{\"ipAddress\":\"${IP}\",\"comment\":\"GitHub Actions runner\"}"
+          -d "{\"ipAddress\":\"${IP}\",\"comment\":\"GitHub Actions runner\"}")
+          echo "Response: $RESPONSE"
+          cat response.json
 
       - name: Wait for Selenium to be ready
         run: |
@@ -63,5 +65,7 @@ jobs:
         run: |
           IP=$(echo ${{ env.IP }})
           echo "Removing IP from MongoDB Atlas whitelist: $IP"
-          curl -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X DELETE \
-          "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList/${IP}"
+          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -u "${{ secrets.MONGODB_PUBLIC_KEY }}:${{ secrets.MONGODB_PRIVATE_KEY }}" --digest -X DELETE \
+          "https://cloud.mongodb.com/api/atlas/v1.0/groups/${{ secrets.MONGODB_PROJECT_ID }}/accessList/${IP}")
+          echo "Response: $RESPONSE"
+          cat response.json
