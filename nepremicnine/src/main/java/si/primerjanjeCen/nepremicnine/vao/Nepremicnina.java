@@ -32,7 +32,7 @@ public class Nepremicnina {
     private String id_nepremicnine;
     private List<String> image_urls;
     private String opis;
-    private String leto_obnove; // Change to String because in the example it's "N/A"
+    private String leto_obnove;
     private String agencija;
     private List<String> lastnosti;
 

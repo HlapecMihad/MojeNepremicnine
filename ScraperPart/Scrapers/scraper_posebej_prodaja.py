@@ -27,7 +27,7 @@ def Linkprodaja():
         last_page_number = 1 
 
     all_links = []
-
+     
     for page_number in range(1, int(last_page_number) + 1):
         print("Scraping page:", page_number)
         
@@ -66,10 +66,23 @@ def scrape_data(url):
     transaction_type = soup.select_one('.pd-meta a.ff-heading').get_text(strip=True) if soup.select_one('.pd-meta a.ff-heading') else 'N/A'
     region = soup.find('p', class_="col-6 fw600 mb10 ff-heading dark-color", string="Regija").find_next('p').get_text(strip=True) if soup.find('p', class_="col-6 fw600 mb10 ff-heading dark-color", string="Regija") else 'N/A'
     city = soup.find('p', class_="col-6 fw600 mb10 ff-heading dark-color", string="Naselje").find_next('p').get_text(strip=True) if soup.find('p', class_="col-6 fw600 mb10 ff-heading dark-color", string="Naselje") else 'N/A'
-    price = soup.find('h3', class_='price mb-0').get_text(strip=True) if soup.find('h3', class_='price mb-0') else 'N/A'
+    try:
+        price_element = soup.find('h3', class_='price mb-0').get_text(strip=True)
+        if(price_element and (price_element != 'Po dogovoru')):
+            price = float(price_element.replace(' €', '').replace('/mesec','').replace('/dan','').replace('.', '').replace(',','.'))
+        else:
+            price = None
+    except (ValueError, AttributeError):
+        price = None
     property_type = soup.find('h6', class_='mb-0', string='Tip').find_next('p', class_='text mb-0 fz15').get_text(strip=True).split(',')[0] if soup.find('h6', class_='mb-0', string='Tip') else 'N/A'
-    kopalnice = soup.find('h6', string="Število kopalnic").find_next('p').get_text(strip=True) if soup.find('h6', string="Število kopalnic") else 'N/A'
-    spalnice = soup.find('h6', string="Število spalnic").find_next('p').get_text(strip=True) if soup.find('h6', string="Število spalnic") else 'N/A'
+    try:
+        kopalnice = float(soup.find('h6', string="Število kopalnic").find_next('p').get_text(strip=True)) if soup.find('h6', string="Število kopalnic") else None
+    except (ValueError, AttributeError):
+        kopalnice = None
+    try:
+        spalnice = float(soup.find('h6', string="Število spalnic").find_next('p').get_text(strip=True)) if soup.find('h6', string="Število spalnic") else None
+    except (ValueError, AttributeError):
+        spalnice = None
 
     tip_element = soup.find('h6', class_='mb-0', string='Tip')
     try:
@@ -80,18 +93,38 @@ def scrape_data(url):
                 second_part = tip_parts[1].strip()
                 rooms = '1' if second_part == 'Garsonjera' else second_part
             else:
-                rooms = 'N/A'
+                second_part = tip_parts[1].strip()
+                rooms = float(second_part.split('-')[0].replace(',','.').replace('+',''))
         else:
-            rooms = 'N/A'
-    except IndexError:
-        rooms = 'N/A'
+            rooms = None
+    except (IndexError, AttributeError):
+        rooms = None
 
     id_nepremicnine = soup.find(title='Šifra oglasa').get_text(strip=True) if soup.find(title='Šifra oglasa') else 'N/A'
-    year_built = soup.find('p', string="Leto izgradnje").find_next('p').get_text(strip=True) if soup.find('p', string="Leto izgradnje") else 'N/A'
-    size = soup.find('h6', string='Velikost').find_next('p').get_text(strip=True) if soup.find('h6', string='Velikost') else 'N/A'
-    if 'Bruto:' in size: size = size.split('Bruto:')[1].split('|')[0].strip() 
+    try:
+        year_built = float(soup.find('p', string="Leto izgradnje").find_next('p').get_text(strip=True)) if soup.find('p', string="Leto izgradnje") else None
+    except (ValueError, AttributeError):
+        year_built = None
+
+    size_element = soup.find('h6', string='Velikost')
+    try:
+        if size_element:
+            size_text = size_element.find_next('p').get_text(strip=True).replace(' m²','').replace('.','').replace(',','.')
+            if 'Bruto:' in size_text:
+                size_text = size_text.split('Bruto:')[1].strip()
+            if size_text != 'Velikost ni vnešena':
+                size = float(size_text)
+            else: size = None
+        else:
+            size = None
+    except (ValueError, AttributeError):
+        size = None
+
     description = soup.find('div', class_='ps-widget bgc-white bdrs12 default-box-shadow2 mb30 p30 overflow-hidden position-relative').text.split('Podrobnosti')[0].strip() if soup.find('div', class_='ps-widget bgc-white bdrs12 default-box-shadow2 mb30 p30 overflow-hidden position-relative') else 'N/A'
-    land_size = soup.find('h6', string="Velikost zemljišča").find_next('p').get_text(strip=True) if soup.find('h6', string="Velikost zemljišča") else 'N/A'
+    try:
+        land_size = float(soup.find('h6', string="Velikost zemljišča").find_next('p').get_text(strip=True).replace(' m²','').replace(',','.')) if soup.find('h6', string="Velikost zemljišča") else None
+    except (ValueError, AttributeError):
+        land_size = None
     rebuild_year = soup.find('p', string="Obnove").find_next('p').get_text(strip=True) if soup.find('p', string="Obnove") else 'N/A'
 
     agent_meta = (soup.find('div', class_='agent-meta mb10 d-md-flex flex-column') or 
@@ -115,12 +148,12 @@ def scrape_data(url):
         'link': url,
         'tip_nepremicnine': property_type,
         'lokacija': region + ', ' + city,
-        'cena': price.replace(' €', '').replace('/mesec','').replace('/dan',''),
-        'st_sob': rooms.split('-')[0].replace(',', '.').replace('+', ''),
+        'cena': price,
+        'st_sob': rooms,
         'st_spalnic': spalnice,
         'st_kopalnic': kopalnice,
         'leto_izgradnje': year_built,
-        'st_nadstropij': 'N/A',  
+        'st_nadstropij': None,  
         'velikost_zemljisca': land_size,  
         'velikost_skupaj': size,  
         'id_nepremicnine': id_nepremicnine if id_nepremicnine != 'N/A' else url.split('/')[4],
@@ -141,9 +174,9 @@ def Nepremicnineprodaja():
     scraped_data = []
     counter = 0
     for link in links:   
-        if counter < 1:
-            data = scrape_data(link)
-            scraped_data.append(data)
+        print(counter)
+        data = scrape_data(link)
+        scraped_data.append(data)
         counter += 1
 
     os.makedirs(json_dir, exist_ok=True)

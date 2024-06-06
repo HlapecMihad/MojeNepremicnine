@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,6 @@ import si.primerjanjeCen.nepremicnine.vao.Nepremicnina;
 import si.primerjanjeCen.nepremicnine.vao.NepremicninaOddaja;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,34 +30,9 @@ public class NepremicninaController {
     @Autowired
     private NepremicninaRepositoryOddaja nepremicninaDaoOddaja;
 
-    @GetMapping("vseNepremicnine")
-    public List<Nepremicnina> getAllNepremicnine() {
-        return nepremicninaDao.findAll();
-    }
-
     @GetMapping("prvihDvanajst")
     public List<Nepremicnina> getPrvihDvanajst() {
         return nepremicninaDao.findAll(PageRequest.of(0, 12)).getContent();
-    }
-
-    @GetMapping("oddaja/vrniGledeNaStran")
-    public List<NepremicninaOddaja> getBasedOnPageOddaja(@RequestParam(defaultValue = "0") int page) {
-        return nepremicninaDaoOddaja.findAll(PageRequest.of(page, 21)).getContent();
-    }
-
-    @GetMapping("prodaja/vrniGledeNaStran")
-    public List<Nepremicnina> getBasedOnPage(@RequestParam(defaultValue = "0") int page) {
-        return nepremicninaDao.findAll(PageRequest.of(page, 21)).getContent();
-    }
-
-    @GetMapping("prodaja/steviloVseh")
-    public long getSteviloVseh() {
-        return nepremicninaDao.count();
-    }
-
-    @GetMapping("oddaja/steviloVseh")
-    public long getSteviloVsehOddaja() {
-        return nepremicninaDaoOddaja.count();
     }
 
     @GetMapping("/vrniPriljubljeneNepremicnine")
@@ -75,8 +48,6 @@ public class NepremicninaController {
 
         return response;
     }
-
-
 
     @GetMapping("filtri")
     public Page<?> getFilteredNepremicnine(
