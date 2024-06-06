@@ -23,7 +23,10 @@ options.add_argument('--remote-debugging-port=9222')
 options.add_argument('--disable-software-rasterizer')
 options.binary_location = os.getenv('EDGE_BINARY_PATH')
 
+print(f"Using Edge binary at: {options.binary_location}")
+
 service = Service('/usr/local/bin/edgedriver')
+print(f"Using Edge WebDriver service at: {service.path}")
 
 driver = webdriver.Edge(service=service, options=options)
 

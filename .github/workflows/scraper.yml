@@ -52,6 +52,9 @@ jobs:
       - name: Set up environment variable for Edge
         run: echo "EDGE_BINARY_PATH=$(which microsoft-edge)" >> $GITHUB_ENV
 
+      - name: Print environment variables
+        run: printenv
+
       - name: Run scraper script
         env:
           PATH: /usr/local/bin:$PATH
