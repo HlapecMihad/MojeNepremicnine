@@ -106,7 +106,7 @@ def scrape_data(url):
         size = None
 
     description = soup.find('div', class_='ps-widget bgc-white bdrs12 default-box-shadow2 mb30 p30 overflow-hidden position-relative').text.split('Podrobnosti')[0].strip() if soup.find('div', class_='ps-widget bgc-white bdrs12 default-box-shadow2 mb30 p30 overflow-hidden position-relative') else 'N/A'
-    land_size = float(soup.find('h6', string="Velikost zemljišča").find_next('p').get_text(strip=True).replace(' m²','').replace(',','.')) if soup.find('h6', string="Velikost zemljišča") else None
+    land_size = float(soup.find('h6', string="Velikost zemljišča").find_next('p').get_text(strip=True).replace(' m²','').replace('.','').replace(',','.')) if soup.find('h6', string="Velikost zemljišča") else None
     rebuild_year = soup.find('p', string="Obnove").find_next('p').get_text(strip=True) if soup.find('p', string="Obnove") else 'N/A'
 
     agent_meta = (soup.find('div', class_='agent-meta mb10 d-md-flex flex-column') or 

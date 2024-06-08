@@ -1,4 +1,3 @@
-import "./App.css";
 import FlatDetail from "./components/FlatDetail";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FavoriteProperties from "./components/FavoriteProperties";
 import OddajaPage from "./components/OddajaPage";
 import Filter from "./components/Filter";
+import "./App.css";
 
 function App() {
   return (
