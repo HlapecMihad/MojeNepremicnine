@@ -1,0 +1,22 @@
+Moje Nepremičnine
+
+Spletna aplikacija Moje Nepremičnine je namenjena enostavnejšemu iskanju nepremičnin.
+
+Leto izdelave: 2024
+
+Luka Car
+Rok Fonovič
+Aljaž Kodrič
+
+Domača stran: https://praktikum-2.vercel.app/ (traja nekaj časa da se zažene, ker uporabljamo brezplačno verzijo)
+Vir podatkov: https://nepremicnine.siol.net/, https://www.re-max.si/, https://c21.si/
+
+Koda: https://github.com/HlapecMihad/MojeNepremicnine
+
+Kategorizacija: spletna aplikacija
+
+Oznake: OdprtiPodatki, ReactJS, MongoDB, Python, AgilenRazvoj, GitHub, UporabaAI, Docker, REST, SpringBoot, GitHub Actions, Vercel, Render, BeautifulSoup...
+
+Opis projekta v nekaj odstavkih / vrsticah (cca 150 besed)
+
+Spletna aplikacija Moje Nepremičnine je namenjena prikazovanju nepremičninskih oglasov iz različnih spletnih strani ter primerjanju med njimi. Cilj aplikacije je ustvariti platformo, kjer lahko uporabniki pregledujejo, iščejo, primerjajo in filtrirajo ter shranjujejo sebi priljubljene nepremičninske oglase. Naša stran je popolnoma neodvisna od nepremičninskih strani, iz katerih pridobivamo podatke saj si te podatke trajno shranimo. Ne glede na to, ali te strani delujejo ali ne, so podatki na voljo, kar zagotavlja nemoteno delovanje naše strani. Podatki se avtomatsko osvežijo enkrat tedensko. 
