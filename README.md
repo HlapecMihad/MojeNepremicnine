@@ -81,7 +81,8 @@ Aplikacija je sestavljena iz frontend in backend delov:
 ![image](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/623d0547-b0f0-440e-a234-ba4af2a3d959)
 
  - Uporabnik:
-![image](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/ce165ed1-5366-4026-a6a8-86efb5dfc359)
+   
+ ![image](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/ce165ed1-5366-4026-a6a8-86efb5dfc359)
 
 ## GALERIJA
 ### Domača stran:
