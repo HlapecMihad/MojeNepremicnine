@@ -9,7 +9,7 @@
  - Luka Car (https://github.com/carluka)
  - Rok Fonovič (https://github.com/01developer1)
 
-### Funkcionalnosti![DomacaStran](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/88c2fca2-029d-4918-8325-62b178f2fbe0)
+### Funkcionalnosti
 
 - **Pregled oglasov**: Uporabniki lahko pregledujejo nepremičninske oglase z različnih spletnih strani.
 - **Iskanje oglasov**: Uporabniki lahko iščejo nepremičnine glede na različne kriterije, kot so lokacija, cena, velikost ipd.
@@ -155,12 +155,28 @@ Aplikacija je sestavljena iz frontend in backend delov:
   }
 
 ## GALERIJA
+### Domača stran:
+![DomacaStran](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/88c2fca2-029d-4918-8325-62b178f2fbe0)
+
+### Primerjanje nepremičnin:
 ![PrimerjanjeNepremicnin](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/ae916cbe-c6f3-4dbf-abce-11adf6b1cdf7)
+
+### Priljubljene nepremičnine
 ![PriljubljeneNepremicnine](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/b219e384-9776-4606-b70b-b9edb4415b6f)
+
+### Prikaz nepremičnin filtri prodaja
 ![PrikazNepremicninFiltri_Prodaja](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/a1007676-ac11-4978-bc6a-3bffced32dd5)
+
+### Prikaz nepremičnin filtri oddaja
 ![PrikazNepremicninFiltri_Oddaja](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/95016a76-449e-443f-b19d-9fd9300e8993)
+
+### Prikaz nepremičnin prodaja
 ![PrikazNepremicnin_Prodaja](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/7c763662-931b-4b13-9890-1fd1a202b2d7)
+
+### Prikaz nepremičnin oddaja
 ![PrikazNepremicnin_Oddaja](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/6ae0ff06-ba3a-49e4-b0ea-8028140c4d87)
+
+### Nepremičnine podrobno
 ![PodrobnoNepremicnina](https://github.com/HlapecMihad/MojeNepremicnine/assets/117631565/3ebdf375-0da4-442b-892d-d5b589ebebd6)
 
 
