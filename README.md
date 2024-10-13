@@ -70,11 +70,10 @@ Aplikacija je sestavljena iz frontend in backend delov:
 ### Namestitev odvisnosti za Backend
 1. Odpirete svoj IDE. (preverjeno samo v IntelliJ IDEA Ultimate)
 2. V IDE odprite mapo `nepremicnine`.
-3. Zaženite backend del projekta.
 
 ## UPORABA APLIKACIJE
 1. **Zagon Frontend-a**: V mapi `FrontEnd/reactjs-real-estate-template-master` zaženite `npm start`.
-2. **Zagon Backend-a**: V mapi `nepremicnine` zaženite `./mvnw spring-boot:run`.
+2. **Zagon Backend-a**: V IDE pritisnite `Run`.
 3. **Zagon Scraper-ja**: V mapi `ScraperPart` zaženite ustrezne skripte za zajem podatkov.
 
 ## SHEMA PODATKOV V BAZI
