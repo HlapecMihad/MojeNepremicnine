@@ -68,8 +68,9 @@ Aplikacija je sestavljena iz frontend in backend delov:
 2. Namestite potrebne odvisnosti z ukazom `pip install -r requirements.txt`.
 
 ### Namestitev odvisnosti za Backend
-1. Pojdite v mapo z backend kodo z ukazom `cd nepremicnine`.
-2. Zaženite aplikacijo z ukazom `./mvnw spring-boot:run`.
+1. Odpirete svoj IDE. (preverjeno samo v IntelliJ IDEA Ultimate)
+2. V IDE odprite mapo `nepremicnine`.
+3. Zaženite backend del projekta.
 
 ## UPORABA APLIKACIJE
 1. **Zagon Frontend-a**: V mapi `FrontEnd/reactjs-real-estate-template-master` zaženite `npm start`.
