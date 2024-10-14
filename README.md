@@ -53,11 +53,16 @@ Aplikacija je sestavljena iz frontend in backend delov:
 - **Development Branch** se uporablja za lokalno rabo
 
 ## NAMESTITEV
-
+### Začetno stanje (potrebne tehnologije)
+- Java 21
+- Apache Maven 3.9.9
+- npm
+- pip
+  
 ### Kloniranje repozitorija
 1. Odprite terminal ali ukazno vrstico.
-2. Za kloniranje repozitorija uporabite naslednji ukaz: `git clone https://github.com/HlapecMihad/PRAKTIKUM2.git`
-3. Pojdite v mapo projekta z ukazom `cd PRAKTIKUM2`.
+2. Za kloniranje repozitorija uporabite naslednji ukaz: `git clone --branch development https://github.com/hlapecmihad/MojeNepremicnine --single-branch`
+3. Pojdite v mapo projekta z ukazom `cd MojeNepremicnine`.
 
 ### Namestitev odvisnosti za Frontend
 1. Pojdite v mapo s frontend kodo z ukazom `cd FrontEnd/reactjs-real-estate-template-master`.
