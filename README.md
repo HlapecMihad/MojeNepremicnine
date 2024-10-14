@@ -67,6 +67,7 @@ Aplikacija je sestavljena iz frontend in backend delov:
 ### Namestitev odvisnosti za Frontend
 1. Pojdite v mapo s frontend kodo z ukazom `cd FrontEnd/reactjs-real-estate-template-master`.
 2. Namestite potrebne odvisnosti z ukazom `npm install`.
+3. Zagon frontenda z ukazom `npm start`.
 
 ### Namestitev odvisnosti za Scraper
 1. Pojdite v mapo z Python skriptami z ukazom `cd ScraperPart`.
@@ -78,7 +79,7 @@ Aplikacija je sestavljena iz frontend in backend delov:
 
 ## UPORABA APLIKACIJE
 1. **Zagon Frontend-a**: V mapi `FrontEnd/reactjs-real-estate-template-master` zaženite `npm start`.
-2. **Zagon Backend-a**: V IDE pritisnite `Run`.
+2. **Zagon Backend-a**: V mapi `nepremicnine` zaženite `mvnw spring-boot:run`.
 3. **Zagon Scraper-ja**: V mapi `ScraperPart` zaženite ustrezne skripte za zajem podatkov.
 
 ## SHEMA PODATKOV V BAZI
