@@ -42,7 +42,7 @@ Aplikacija je sestavljena iz frontend in backend delov:
 ### Backend
 **Direktorij**: `nepremicnine`
 - **Opis**: Koda za posredovanje podatkov frontend-u, zgrajena z uporabo Spring frameworka.
-- **Namestitev odvisnosti**: Prepričajte se, da imate nameščen JDK 11 ali novejši, in zaženite aplikacijo z ukazom `./mvnw spring-boot:run`.
+- **Namestitev odvisnosti**: Prepričajte se, da imate nameščen JDK 11 ali novejši, in zaženite aplikacijo z ukazom `mvnw spring-boot:run`.
 
 ### Komunikacija med Frontend-om in Backend-om
 - **Protokol**: REST
@@ -68,8 +68,8 @@ Aplikacija je sestavljena iz frontend in backend delov:
 2. Namestite potrebne odvisnosti z ukazom `pip install -r requirements.txt`.
 
 ### Namestitev odvisnosti za Backend
-1. Odpirete svoj IDE. (preverjeno samo v IntelliJ IDEA Ultimate)
-2. V IDE odprite mapo `nepremicnine`.
+1. Pojdite v mapo z backend kodo z ukazom `cd nepremicnine`.
+2. Zaženite aplikacijo z ukazom `mvnw spring-boot:run`.
 
 ## UPORABA APLIKACIJE
 1. **Zagon Frontend-a**: V mapi `FrontEnd/reactjs-real-estate-template-master` zaženite `npm start`.
